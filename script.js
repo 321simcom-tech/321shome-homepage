@@ -131,7 +131,9 @@
       wrap.innerHTML =
         "<div class=\"compare-label\">" + row.label + "</div>" +
         "<div class=\"compare-a\"><span>일반 가족 여행 / 기존 복지 캠프</span><p>" + row.a + "</p></div>" +
-        "<div class=\"compare-b\"><span>강진형 복지관광 (삼이일심)</span><p>" + row.b + "</p></div>";
+        "<div class=\"compare-b\"><span>강진형 복지관광 (삼이일심)</span><p><span class=\"compare-check\">" +
+        "<svg viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3.5 8.5L6.5 11.5L12.5 4.5\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>" +
+        "</span><span>" + row.b + "</span></p></div>";
       compareRows.appendChild(wrap);
     });
 
