@@ -10,7 +10,7 @@
       "또래 교류 활동",
       "개별 관심 기반 활동"
     ],
-    "image": "images/placeholder-wide.svg"
+    "image": "images/bread_chungja.png"
   },
   "nav": {
     "items": [
@@ -83,7 +83,7 @@
       "개별 특성 맞춤 지원",
       "전문 인력과 함께하는 활동"
     ],
-    "image": "images/placeholder-wide.svg"
+    "image": "images/water_yuri_m.png"
   },
   "mobileCta": {
     "text": "우리 가족도 함께할 수 있을까요?",
@@ -221,7 +221,7 @@
       "아무것도 하지 않기"
     ],
     "quote": "쉬는 것도 여행입니다.",
-    "image": "images/placeholder-wide.svg"
+    "image": "images/mom2.jpeg"
   },
   "faq": {
     "heading": "자주 묻는 질문",
@@ -332,7 +332,7 @@
       "함께 여행하고"
     ],
     "closing": "우리 가족의 여행으로 완성됩니다.",
-    "image": "images/placeholder-fullbleed.svg"
+    "image": "images/family2_m.png"
   },
   "sectionVisibility": {
     "sibling": true,
@@ -388,7 +388,7 @@
     ],
     "cta": "우리 가족도 함께할 수 있을까요?",
     "ctaHref": "#apply",
-    "image": "images/placeholder-fullbleed.svg"
+    "image": "images/family.png"
   },
   "travel": {
     "heading": "강진에서 만나는\n우리 가족의 여행",
@@ -529,15 +529,15 @@
     "heading": "가족여행, 이런 고민 있으신가요?",
     "cards": [
       {
-        "image": "images/placeholder-tile.svg",
+        "image": "images/mom.jpeg",
         "body": "부모는 아이를 계속 신경 쓰게 되고\n여행에서도 아이의 행동과 상태를 계속 살펴야 합니다."
       },
       {
-        "image": "images/placeholder-tile.svg",
+        "image": "images/kid1.jpeg",
         "body": "낯선 곳, 많은 사람 속에서 불안하고\n새로운 환경은 아이와 가족 모두에게 부담이 될 수 있습니다."
       },
       {
-        "image": "images/placeholder-tile.svg",
+        "image": "images/kid2.jpeg",
         "body": "형제자매에게는 관심을 나누기 어렵습니다.\n여행에서도 형제자매가 원하는 경험을 충분히 챙기기 어렵습니다."
       }
     ],
