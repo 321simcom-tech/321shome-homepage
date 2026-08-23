@@ -11,17 +11,19 @@
   }
 
   // Netlify Image CDN: 업로드된 사진(jpg/png/webp/gif)을 요청 크기에 맞춰 자동 리사이즈·압축.
-  // 배포 환경(Netlify)에서만 동작하며, 로컬 미리보기에서는 원본이 그대로 표시됨.
+  // 배포 환경(Netlify)에서만 /.netlify/images 엔드포인트가 존재하므로, 로컬 미리보기
+  // (localhost/127.0.0.1 등)에서는 CDN을 거치지 않고 원본 파일 경로를 그대로 사용한다.
+  var IS_LOCAL_PREVIEW = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(window.location.hostname) || window.location.protocol === "file:";
   function isRasterImage(path) {
     return /\.(jpe?g|png|webp|gif)(\?.*)?$/i.test(path || "");
   }
   function imgUrl(path, width, quality) {
-    if (!path || !isRasterImage(path)) return path;
+    if (!path || !isRasterImage(path) || IS_LOCAL_PREVIEW) return path;
     var absPath = "/" + String(path).replace(/^\/+/, "");
     return "/.netlify/images?url=" + encodeURIComponent(absPath) + "&w=" + width + "&q=" + (quality || 75);
   }
   function imgSrcset(path, widths, quality) {
-    if (!path || !isRasterImage(path)) return "";
+    if (!path || !isRasterImage(path) || IS_LOCAL_PREVIEW) return "";
     return widths.map(function (w) { return imgUrl(path, w, quality) + " " + w + "w"; }).join(", ");
   }
   function applyResponsiveImage(imgEl, path, widths, sizes, defaultWidth) {
@@ -77,14 +79,18 @@
     hydrateSimpleFields(data);
 
     // 로고: 이미지가 등록되어 있으면 기본 아이콘 대신 표시
+    // 로고 이미지에는 회사명 문구가 이미 포함되어 있어, 로고 사용 시
+    // 기본 아이콘과 옆의 중복 텍스트 라벨을 함께 숨긴다.
     var hasLogo = !!data.site.logoImage;
     ["brand", "footer"].forEach(function (prefix) {
       var mark = document.getElementById(prefix + "-mark");
       var logo = document.getElementById(prefix + "-logo");
+      var nameEl = document.querySelector("." + prefix + "-name");
       if (!mark || !logo) return;
       mark.style.display = hasLogo ? "none" : "";
+      if (nameEl) nameEl.style.display = hasLogo ? "none" : "";
       if (hasLogo) {
-        applyResponsiveImage(logo, data.site.logoImage, [68, 136], "68px", 68);
+        applyResponsiveImage(logo, data.site.logoImage, [200, 400], "200px", 200);
         logo.alt = data.site.name || "";
         logo.style.display = "";
       } else {
