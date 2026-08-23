@@ -1,16 +1,4 @@
 {
-  "sectionVisibility": {
-    "problem": true,
-    "solution": true,
-    "compare": true,
-    "schedule": true,
-    "care": true,
-    "gangjin": true,
-    "results": true,
-    "partners": true,
-    "about": true,
-    "apply": true
-  },
   "nav": {
     "items": [
       {
@@ -280,6 +268,18 @@
       }
     ]
   },
+  "sectionVisibility": {
+    "compare": true,
+    "partners": true,
+    "about": true,
+    "apply": true,
+    "care": true,
+    "results": true,
+    "schedule": true,
+    "solution": true,
+    "gangjin": true,
+    "problem": true
+  },
   "solution": {
     "heading": "의도된 분리와 통합",
     "sub": "세 사람이 각자의 시간을 온전히 보내고, 하루의 끝에 다시 만납니다.",
@@ -342,9 +342,17 @@
     "ctaPrimaryHref": "#apply"
   },
   "footer": {
+    "programsLabel": "지원사업",
+    "copyright": "© 2026 (주)삼이일심",
     "companyName": "(주)삼이일심",
+    "showPrograms": false,
+    "programs": [
+      "한국관광공사",
+      "2026년 BETTER里 지원사업",
+      "FUTURE BRIDGE 관광벤처"
+    ],
     "infoLine1": "대표자 홍길동 · 사업자등록번호 000-00-00000",
-    "infoLine2": "전남 강진군 병영면",
+    "infoLine2": "전남 강진군",
     "infoLine3": "대표전화 000-0000-0000 · hello@samiilsim.kr",
     "links": [
       {
@@ -362,15 +370,7 @@
         "href": "#partners",
         "visible": false
       }
-    ],
-    "showPrograms": false,
-    "programsLabel": "지원사업",
-    "programs": [
-      "한국관광공사",
-      "2026년 BETTER里 지원사업",
-      "FUTURE BRIDGE 관광벤처"
-    ],
-    "copyright": "© 2026 (주)삼이일심"
+    ]
   },
   "gangjin": {
     "tag": "WHERE",
