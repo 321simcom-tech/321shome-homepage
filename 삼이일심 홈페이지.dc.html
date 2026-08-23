@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics="">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#FDFBF7;font-family:"Pretendard Variable",Pretendard,"Noto Sans KR",-apple-system,BlinkMacSystemFont,system-ui,"Malgun Gothic",sans-serif;color:#3D3757;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+*{box-sizing:border-box}
+a{color:#B85410;text-decoration:none}
+a:hover{color:#8f3f0a}
+button{font-family:inherit}
+:focus-visible{outline:3px solid #B85410;outline-offset:2px}
+@keyframes fillBar{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important}}
+</style>
+</helmet>
+
+<header style="position:sticky;top:0;z-index:50;background:rgba(253,251,247,.92);backdrop-filter:blur(12px);border-bottom:1px solid #E6DCCC">
+  <div style="max-width:1160px;margin:0 auto;padding:12px clamp(20px,4vw,32px);display:flex;align-items:center;gap:clamp(16px,3vw,40px);flex-wrap:wrap">
+    <a href="#top" style="display:flex;align-items:center;gap:10px;flex:none">
+      <span style="display:flex;flex-direction:column;justify-content:center;gap:3px;width:34px;height:34px;background:#F37D21;border-radius:8px;padding:8px 7px">
+        <span style="display:block;height:2px;background:#2D2A6F;border-radius:2px"></span>
+        <span style="display:block;height:2px;background:#2D2A6F;border-radius:2px"></span>
+        <span style="display:block;height:2px;width:60%;background:#2D2A6F;border-radius:2px"></span>
+      </span>
+      <span style="font-size:17px;font-weight:700;color:#2D2A6F;letter-spacing:-.02em">삼이일심</span>
+    </a>
+    <nav style="display:flex;align-items:center;gap:clamp(14px,2vw,26px);flex-wrap:wrap;flex:1 1 auto">
+      <a href="#program" style="font-size:15px;font-weight:500;color:#3D3757">프로그램</a>
+      <a href="#care" style="font-size:15px;font-weight:500;color:#3D3757">안심 케어</a>
+      <a href="#gangjin" style="font-size:15px;font-weight:500;color:#3D3757">강진 이야기</a>
+      <a href="#results" style="font-size:15px;font-weight:500;color:#3D3757">실증 성과</a>
+      <a href="#about" style="font-size:15px;font-weight:500;color:#3D3757">회사 소개</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:16px;flex:none">
+      <a href="#partners" style="font-size:15px;font-weight:500;color:#B85410">기업·기관 문의</a>
+      <a href="#apply" style="display:inline-flex;align-items:center;height:44px;padding:0 22px;background:#F37D21;color:#2D2A6F;border-radius:14px;font-size:16px;font-weight:600;transition:transform .18s ease-out,box-shadow .18s ease-out" style-hover="transform:translateY(-2px);box-shadow:0 4px 16px rgba(45,42,111,.07);color:#2D2A6F">참가 신청</a>
+    </div>
+  </div>
+</header>
+
+<section id="top" style="background:#F5EEE3;padding:clamp(48px,7vw,88px) clamp(20px,4vw,32px) clamp(64px,8vw,104px)">
+  <div style="max-width:1160px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:clamp(32px,5vw,56px);align-items:center">
+    <div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
+        <span style="display:block;width:24px;height:2px;background:#F37D21"></span>
+        <span style="font-size:14px;font-weight:600;letter-spacing:.08em;color:#B85410;word-break:keep-all">한국관광공사 2026 BETTER里 지원사업 선정</span>
+      </div>
+      <h1 style="margin:0;font-size:clamp(2.125rem,5.5vw,4rem);font-weight:700;line-height:1.25;letter-spacing:-.025em;color:#241F45;word-break:keep-all">아이에게는 안전한 성장,<br>부모에게는 온전한 쉼.</h1>
+      <p style="margin:24px 0 0;max-width:45em;font-size:clamp(1.0625rem,2vw,1.375rem);line-height:1.7;letter-spacing:-.01em;color:#3D3757;word-break:keep-all">발달장애 아동을 전문 인력이 <strong style="color:#241F45">20시까지</strong> 돌보는 동안,<br>부모는 강진에서 온전히 쉬는 2박 3일.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:28px">
+        <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;background:#FDEEDF;color:#B85410;font-size:14px;font-weight:600">20시까지 풀케어</span>
+        <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;background:#FDEEDF;color:#B85410;font-size:14px;font-weight:600">1:1 밀착 지원</span>
+        <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;background:#FDEEDF;color:#B85410;font-size:14px;font-weight:600">비장애 형제자매 동반</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:32px">
+        <a href="#apply" style="display:inline-flex;align-items:center;height:52px;padding:0 28px;border-radius:14px;background:#F37D21;color:#2D2A6F;font-size:17px;font-weight:600;transition:transform .18s ease-out,box-shadow .18s ease-out" style-hover="transform:translateY(-2px);box-shadow:0 4px 16px rgba(45,42,111,.07);color:#2D2A6F">개인 문의하기</a>
+        <a href="#partners" style="display:inline-flex;align-items:center;height:52px;padding:0 28px;border-radius:14px;border:1.5px solid #2D2A6F;color:#2D2A6F;font-size:17px;font-weight:600;transition:transform .18s ease-out" style-hover="transform:translateY(-2px);color:#2D2A6F">기업·기관 파트너십 문의</a>
+      </div>
+    </div>
+    <div style="position:relative">
+      <span style="position:absolute;left:-14px;bottom:-14px;width:120px;height:120px;background:#F37D21;border-radius:20px;z-index:0"></span>
+      <div style="position:relative;z-index:1;border-radius:28px;overflow:hidden;background:repeating-linear-gradient(135deg,#EFE6D8 0 12px,#E7DCCB 12px 24px);border:1px solid #E6DCCC;aspect-ratio:4/4.4;display:flex;align-items:flex-end;padding:20px">
+        <span style="font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;color:#6B6480">[사진] 남도 풍경 속에서 차 한잔 하며<br>쉬는 부모의 뒷모습</span>
+      </div>
+      <div style="position:relative;z-index:2;margin:-28px 0 0 clamp(0px,3vw,28px);max-width:340px;background:#FFFFFF;border:1px solid #E6DCCC;border-radius:20px;padding:20px 22px;box-shadow:0 12px 32px rgba(45,42,111,.09)">
+        <p style="margin:0;font-size:16px;line-height:1.6;color:#241F45;font-weight:600;word-break:keep-all">저녁 18시~20시, 활동지원사 4명이 아이 곁에 있습니다</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:#FDFBF7;padding:clamp(64px,9vw,112px) clamp(20px,4vw,32px)">
+  <div style="max-width:1160px;margin:0 auto">
+    <h2 style="margin:0;max-width:20em;font-size:clamp(1.625rem,3.6vw,2.625rem);font-weight:700;line-height:1.3;letter-spacing:-.02em;color:#241F45;word-break:keep-all">발달장애 가족에게 여행은, 종종 <span style="color:#B85410">또 다른 노동</span>이 됩니다.</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:48px">
+      <article style="background:#FFFFFF;border:1px solid #E6DCCC;border-radius:20px;padding:clamp(24px,3vw,32px);box-shadow:0 1px 2px rgba(45,42,111,.05);transition:box-shadow .2s ease-out" style-hover="box-shadow:0 4px 16px rgba(45,42,111,.07)">
+        <span style="display:block;width:44px;height:4px;background:#B85410;border-radius:2px;margin-bottom:20px"></span>
+        <h3 style="margin:0;font-size:1.3125rem;font-weight:600;line-height:1.4;letter-spacing:-.01em;color:#241F45;word-break:keep-all">돌봄은 24시간, 쉼은 0시간</h3>
+        <p style="margin:12px 0 0;font-size:1.0625rem;line-height:1.8;color:#3D3757;word-break:keep-all">대부분의 캠프는 17~18시에 종료됩니다. 저녁 시간의 돌봄 부담은 그대로 부모에게 돌아옵니다.</p>
+      </article>
+      <article style="background:#FFFFFF;border:1px solid #E6DCCC;border-radius:20px;padding:clamp(24px,3vw,32px);box-shadow:0 1px 2px rgba(45,42,111,.05);transition:box-shadow .2s ease-out" style-hover="box-shadow:0 4px 16px rgba(45,42,111,.07)">
+        <span style="display:block;width:44px;height:4px;background:#B85410;border-radius:2px;margin-bottom:20px"></span>
+        <h3 style="margin:0;font-size:1.3125rem;font-weight:600;line-height:1.4;letter-spacing:-.01em;color:#241F45;word-break:keep-all">전문성 없는 지원 인력</h3>
+        <p style="margin:12px 0 0;font-size:1.0625rem;line-height:1.8;color:#3D3757;word-break:keep-all">자원봉사자 중심의 1:N 케어로는 발달장애 아동의 개별 특성에 맞춘 돌봄이 어렵습니다.</p>
+      </article>
+      <article style="background:#FFFFFF;border:1px solid #E6DCCC;border-radius:20px;padding:clamp(24px,3vw,32px);box-shadow:0 1px 2px rgba(45,42,111,.05);transition:box-shadow .2s ease-out" style-hover="box-shadow:0 4px 16px rgba(45,42,111,.07)">
+        <span style="display:block;width:44px;height:4px;background:#B85410;border-radius:2px;margin-bottom:20px"></span>
+        <h3 style="margin:0;font-size:1.3125rem;font-weight:600;line-height:1.4;letter-spacing:-.01em;color:#241F45;word-break:keep-all">소외되는 비장애 형제자매</h3>
+        <p style="margin:12px 0 0;font-size:1.0625rem;line-height:1.8;color:#3D3757;word-break:keep-all">프로그램이 장애 아동 중심으로 짜이면서, 함께 온 형제자매는 갈 곳이 없습니다.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="program" style="background:#F5EEE3;padding:clamp(64px,9vw,112px) clamp(20px,4vw,32px)">
+  <div style="max-width:1160px;margin:0 auto">
+    <div style="display:flex;align-items:center;gap:10px">
+      <span style="display:block;width:24px;height:2px;background:#F37D21"></span>
+      <span style="font-size:14px;font-weight:600;letter-spacing:.08em;color:#B85410">SOLUTION</span>
+    </div>
+    <h2 style="margin:12px 0 0;font-size:clamp(1.625rem,3.6vw,2.625rem);font-weight:700;line-height:1.3;letter-spacing:-.02em;color:#241F45;word-break:keep-all">의도된 분리와 통합</h2>
+    <p style="margin:16px 0 0;max-width:640px;font-size:1.1875rem;line-height:1.8;color:#6B6480;word-break:keep-all">세 사람이 각자의 시간을 온전히 보내고, 하루의 끝에 다시 만납니다.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:48px">
+      <article style="background:#FFFFFF;border:1px solid #E6DCCC;border-top:4px solid #2D2A6F;border-radius:20px;padding:clamp(24px,3vw,32px);box-shadow:0 1px 2px rgba(45,42,111,.05)">
+        <span style="font-size:14px;font-weight:600;letter-spacing:.04em;color:#6B6480">발달장애 아동</span>
+        <h3 style="margin:8px 0 0;font-size:1.375rem;font-weight:600;line-height:1.4;color:#2D2A6F;word-break:keep-all">1:1 안심 케어</h3>
+        <p style="margin:14px 0 0;font-size:1.0625rem;line-height:1.8;color:#3D3757;word-break:keep-all">치료가 아닌 온전한 쉼과 자발적 활동 지원. Stay Strong Together.</p>
+      </article>
+      <article style="background:#FFFFFF;border:1px solid #E6DCCC;border-top:4px solid #5F7A5A;border-radius:20px;padding:clamp(24px,3vw,32px);box-shadow:0 1px 2px rgba(45,42,111,.05)">
+        <span style="font-size:14px;font-weight:600;letter-spacing:.04em;color:#6B6480">비장애 형제자매</span>
+        <h3 style="margin:8px 0 0;font-size:1.375rem;font-weight:600;line-height:1.4;color:#5F7A5A;word-break:keep-all">맞춤형 체험</h3>
+        <p style="margin:14px 0 0;font-size:1.0625rem;line-height:1.8;color:#3D3757;word-break:keep-all">청자 조각 체험, 민화뮤지엄 관람, <br>다양한 체험활동.</p>
+      </article>
+      <article style="background:#FFFFFF;border:1px solid #E6DCCC;border-top:4px solid #F37D21;border-radius:20px;padding:clamp(24px,3vw,32px);box-shadow:0 1px 2px rgba(45,42,111,.05)">
+        <span style="font-size:14px;font-weight:600;letter-spacing:.04em;color:#6B6480">부모</span>
+        <h3 style="margin:8px 0 0;font-size:1.375rem;font-weight:600;line-height:1.4;color:#B85410;word-break:keep-all">20시까지 온전한 쉼</h3>
+        <p style="margin:14px 0 0;font-size:1.0625rem;line-height:1.8;color:#3D3757;word-break:keep-all">아무것도 하지 않을 자유. <br>동료 부모와의 티타임, <br>지역 투어 등 선택형 힐링.</p>
+      </article>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(24px,4vw,48px);align-items:center;margin-top:24px;background:#FFFFFF;border:1px solid #E6DCCC;border-radius:28px;padding:clamp(24px,4vw,40px)">
+      <div style="display:flex;flex-direction:column;align-items:center">
+        <div style="display:flex;justify-content:space-between;width:100%;max-width:520px;gap:8px">
+          <span style="flex:1;text-align:center;font-size:14px;font-weight:600;color:#2D2A6F;word-break:keep-all">아동<br>1:1 케어</span>
+          <span style="flex:1;text-align:center;font-size:14px;font-weight:600;color:#5F7A5A;word-break:keep-all">형제자매<br>맞춤 체험</span>
+          <span style="flex:1;text-align:center;font-size:14px;font-weight:600;color:#B85410;word-break:keep-all">부모<br>온전한 쉼</span>
+        </div>
+        <svg viewBox="0 0 600 90" width="100%" height="90" aria-hidden="true" style="max-width:520px;display:block;margin-top:10px">
+          <path d="M100 0 L100 34 Q100 54 200 54 L300 54" fill="none" stroke="#D3C5AF" stroke-width="2"></path>
+          <path d="M300 0 L300 54" fill="none" stroke="#D3C5AF" stroke-width="2"></path>
+          <path d="M500 0 L500 34 Q500 54 400 54 L300 54" fill="none" stroke="#D3C5AF" stroke-width="2"></path>
+          <path d="M300 54 L300 76" fill="none" stroke="#F37D21" stroke-width="3"></path>
+        </svg>
+        <span style="display:inline-flex;align-items:center;height:36px;padding:0 18px;border-radius:999px;background:#F37D21;color:#2D2A6F;font-size:15px;font-weight:700;margin-top:-8px">20시 — 다시 함께</span>
+      </div>
+      <div>
+        <p style="margin:0;font-size:clamp(1.125rem,2vw,1.375rem);font-weight:600;line-height:1.6;letter-spacing:-.01em;color:#241F45;word-break:keep-all;max-width:24em">낮에는 각자의 시간, 저녁에는 다시 한 가족.<br>돌봄 공백 없이 하루가 이어집니다.</p>
+        <div style="display:grid;gap:12px;margin-top:24px">
+          <div style="display:flex;gap:12px;align-items:baseline">
+            <span style="flex:none;width:78px;font:13px ui-monospace,Menlo,monospace;color:#B85410;font-variant-numeric:tabular-nums">10–18시</span>
+            <span style="font-size:1.0625rem;line-height:1.7;color:#3D3757;word-break:keep-all">아동·형제자매·부모가 각자의 동선으로 나뉩니다</span>
+          </div>
+          <div style="display:flex;gap:12px;align-items:baseline">
+            <span style="flex:none;width:78px;font:13px ui-monospace,Menlo,monospace;color:#B85410;font-variant-numeric:tabular-nums">18–20시</span>
+            <span style="font-size:1.0625rem;line-height:1.7;color:#3D3757;word-break:keep-all">활동지원사 4명이 아이 곁에, 부모는 자유 시간</span>
+          </div>
+          <div style="display:flex;gap:12px;align-items:baseline">
+            <span style="flex:none;width:78px;font:13px ui-monospace,Menlo,monospace;color:#B85410;font-variant-numeric:tabular-nums">20시</span>
+            <span style="font-size:1.0625rem;line-height:1.7;color:#3D3757;word-break:keep-all">숙소에서 다시 함께, 하루를 마무리합니다</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:#2D2A6F;padding:clamp(64px,9vw,112px) clamp(20px,4vw,32px)">
+  <div style="max-width:1160px;margin:0 auto">
+    <h2 style="margin:0;font-size:clamp(1.625rem,3.6vw,2.625rem);font-weight:700;line-height:1.3;letter-spacing:-.02em;color:#FDFBF7;word-break:keep-all">일반 가족 여행과 무엇이 다른가</h2>
+    <div style="display:flex;flex-direction:column;gap:16px;margin-top:48px">
+      <sc-for list="{{ compare }}" as="row" hint-placeholder-count="5">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;align-items:stretch">
+          <div style="grid-column:1/-1;font-size:14px;font-weight:600;letter-spacing:.08em;color:#F37D21">{{ row.label }}</div>
+          <div style="background:rgba(253,251,247,.06);border:1px solid rgba(253,251,247,.16);border-radius:20px;padding:22px 24px">
+            <span style="display:block;font-size:13px;font-weight:600;color:rgba(253,251,247,.6);margin-bottom:8px">일반 가족 여행 / 기존 복지 캠프</span>
+            <p style="margin:0;font-size:1.0625rem;line-height:1.7;color:rgba(253,251,247,.82);word-break:keep-all">{{ row.a }}</p>
+          </div>
+          <div style="background:rgba(243,125,33,.08);border:1.5px solid #F37D21;border-radius:20px;padding:22px 24px">
+            <span style="display:block;font-size:13px;font-weight:600;color:#F37D21;margin-bottom:8px">강진형 복지관광 (삼이일심)</span>
+            <p style="margin:0;font-size:1.0625rem;line-height:1.7;color:#FDFBF7;font-weight:600;word-break:keep-all">{{ row.b }}</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <p style="margin:48px 0 0;font-size:clamp(1.25rem,2.6vw,1.75rem);font-weight:700;line-height:1.5;letter-spacing:-.02em;color:#F37D21;word-break:keep-all;max-width:24em">부모의 야간 식사와 자유 시간을 보장하는 전국 유일 모델</p>
+  </div>
+</section>
+
+<section style="background:#FDFBF7;padding:clamp(64px,9vw,112px) clamp(20px,4vw,32px)">
+  <div style="max-width:1160px;margin:0 auto">
+    <div style="display:flex;align-items:center;gap:10px">
+      <span style="display:block;width:24px;height:2px;background:#F37D21"></span>
+      <span style="font-size:14px;font-weight:600;letter-spacing:.08em;color:#B85410">SCHEDULE</span>
+    </div>
+    <h2 style="margin:12px 0 0;font-size:clamp(1.625rem,3.6vw,2.625rem);font-weight:700;line-height:1.3;letter-spacing:-.02em;color:#241F45;word-break:keep-all">2박 3일, 이렇게 흘러갑니다</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:48px">
+      <sc-for list="{{ days }}" as="day" hint-placeholder-count="3">
+        <article style="background:#FFFFFF;border:1px solid #E6DCCC;border-radius:20px;padding:clamp(24px,3vw,32px);box-shadow:0 1px 2px rgba(45,42,111,.05)">
+          <span style="font-size:14px;font-weight:600;letter-spacing:.08em;color:#B85410">{{ day.n }}</span>
+          <h3 style="margin:8px 0 0;font-size:1.375rem;font-weight:600;line-height:1.4;color:#241F45;word-break:keep-all">{{ day.title }}</h3>
+          <div style="margin-top:20px">
+            <div style="position:relative;height:12px;border-radius:999px;background:#F5EEE3;overflow:hidden">
+              <div style="{{ day.barStyle }}"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-top:6px;font:12px ui-monospace,Menlo,monospace;color:#6B6480;font-variant-numeric:tabular-nums">
+              <span>{{ day.start }}</span><span style="{{ day.midStyle }}">{{ day.mid }}</span><span>{{ day.end }}</span>
+            </div>
+          </div>
+          <ul style="margin:20px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px">
+            <sc-for list="{{ day.items }}" as="it" hint-placeholder-count="4">
+              <li style="display:flex;gap:10px;font-size:1.0625rem;line-height:1.7;color:#3D3757;word-break:keep-all">
+                <span style="flex:none;width:6px;height:6px;margin-top:11px;border-radius:999px;background:#D3C5AF"></span>
+                <span>{{ it }}</span>
+              </li>
+            </sc-for>
+          </ul>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="care" style="background:#F5EEE3;padding:clamp(64px,9vw,112px) clamp(20px,4vw,32px)">
+  <div style="max-width:1160px;margin:0 auto">
+    <div style="display:flex;align-items:center;gap:10px">
+      <span style="display:block;width:24px;height:2px;background:#F37D21"></span>
+      <span style="font-size:14px;font-weight:600;letter-spacing:.08em;color:#B85410">CARE</span>
+    </div>
+    <h2 style="margin:12px 0 0;font-size:clamp(1.625rem,3.6vw,2.625rem);font-weight:700;line-height:1.3;letter-spacing:-.02em;color:#241F45;word-break:keep-all">누가, 어떻게 아이 곁에 있나요</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-top:48px">
+      <article style="background:#FFFFFF;border:1px solid #E6DCCC;border-radius:20px;padding:clamp(24px,3vw,32px)">
+        <div style="display:flex;align-items:baseline;gap:6px">
+          <span style="font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.1;letter-spacing:-.03em;color:#2D2A6F;font-variant-numeric:tabular-nums">1</span>
+          <span style="font-size:1.125rem;font-weight:600;color:#2D2A6F">명</span>
+        </div>
+        <h3 style="margin:8px 0 0;font-size:1.25rem;font-weight:600;color:#241F45">작업치료사</h3>
+        <p style="margin:10px 0 0;font-size:1.0625rem;line-height:1.8;color:#3D3757;word-break:keep-all">프로그램 설계 및 안전 관리</p>
+      </article>
+      <article style="background:#FFFFFF;border:1px solid #E6DCCC;border-radius:20px;padding:clamp(24px,3vw,32px)">
+        <div style="display:flex;align-items:baseline;gap:6px">
+          <span style="font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.1;letter-spacing:-.03em;color:#2D2A6F;font-variant-numeric:tabular-nums">4</span>
+          <span style="font-size:1.125rem;font-weight:600;color:#2D2A6F">명</span>
+        </div>
+        <h3 style="margin:8px 0 0;font-size:1.25rem;font-weight:600;color:#241F45">보조교사</h3>
+        <p style="margin:10px 0 0;font-size:1.0625rem;line-height:1.8;color:#3D3757;word-break:keep-all">아동 밀착 지원</p>
+        <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;margin-top:14px;border-radius:999px;background:#F37D21;color:#2D2A6F;font-size:14px;font-weight:700">1:1</span>
+      </article>
+      <article style="background:#FFFFFF;border:1px solid #E6DCCC;border-radius:20px;padding:clamp(24px,3vw,32px)">
+        <div style="display:flex;align-items:baseline;gap:6px">
+          <span style="font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.1;letter-spacing:-.03em;color:#2D2A6F;font-variant-numeric:tabular-nums">4</span>
+          <span style="font-size:1.125rem;font-weight:600;color:#2D2A6F">명</span>
+        </div>
+        <h3 style="margin:8px 0 0;font-size:1.25rem;font-weight:600;color:#241F45">활동지원사</h3>
+        <p style="margin:10px 0 0;font-size:1.0625rem;line-height:1.8;color:#3D3757;word-break:keep-all">저녁 시간(18~20시) 돌봄, 성별 매칭</p>
+        <span style="display:inline-flex;align-items:center;height:32px;padding:0 14px;margin-top:14px;border-radius:999px;background:#FDEEDF;color:#B85410;font-size:14px;font-weight:600">20시까지 풀케어</span>
+      </article>
+      <article style="background:#FFFFFF;border:1px solid #E6DCCC;border-radius:20px;padding:clamp(24px,3vw,32px)">
+        <div style="font-size:clamp(1.5rem,2.6vw,2rem);font-weight:700;line-height:1.2;letter-spacing:-.03em;color:#2D2A6F">운영 담당자</div>
+        <p style="margin:10px 0 0;font-size:1.0625rem;line-height:1.8;color:#3D3757;word-break:keep-all">사회복지사 또는 활동지원사 자격 보유</p>
+      </article>
+    </div>
+    <div style="margin-top:40px">
+      <span style="font-size:14px;font-weight:600;letter-spacing:.08em;color:#6B6480">협력 전문가 그룹</span>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px">
+        <span style="display:inline-flex;align-items:center;height:38px;padding:0 16px;border-radius:8px;background:#FFFFFF;border:1px solid #E6DCCC;font-size:15px;color:#3D3757">대학작업치료사협회 광주전남지회</span>
+        <span style="display:inline-flex;align-items:center;height:38px;padding:0 16px;border-radius:8px;background:#FFFFFF;border:1px solid #E6DCCC;font-size:15px;color:#3D3757">지역 활동지원사</span>
+        <span style="display:inline-flex;align-items:center;height:38px;padding:0 16px;border-radius:8px;background:#FFFFFF;border:1px solid #E6DCCC;font-size:15px;color:#3D3757">지역 대학 (보조교사)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gangjin" style="background:#FDFBF7;padding:clamp(64px,9vw,112px) clamp(20px,4vw,32px)">
+  <div style="max-width:1160px;margin:0 auto">
+    <div style="display:flex;align-items:center;gap:10px">
+      <span style="display:block;width:24px;height:2px;background:#5F7A5A"></span>
+      <span style="font-size:14px;font-weight:600;letter-spacing:.08em;color:#5F7A5A">WHERE</span>
+    </div>
+    <h2 style="margin:12px 0 0;font-size:clamp(1.625rem,3.6vw,2.625rem);font-weight:700;line-height:1.3;letter-spacing:-.02em;color:#241F45;word-break:keep-all">부모가 쉬는 동안, 강진이 아이를 맞이합니다</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:48px">
+      <sc-for list="{{ tiles }}" as="t" hint-placeholder-count="6">
+        <figure style="{{ t.style }}">
+          <span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(45,42,111,0) 0%,rgba(45,42,111,.75) 100%)"></span>
+          <figcaption style="position:relative;padding:20px;color:#FDFBF7;font-size:1.0625rem;font-weight:600;word-break:keep-all">{{ t.name }}</figcaption>
+          <span style="position:absolute;top:16px;left:20px;font:11px ui-monospace,Menlo,monospace;color:rgba(253,251,247,.75)">[사진]</span>
+        </figure>
+      </sc-for>
+    </div>
+    <p style="margin:32px 0 0;max-width:45em;font-size:1.0625rem;line-height:1.8;color:#6B6480;word-break:keep-all">나주생태습지공원, 완도 해양치유센터까지 연계한 남도 3개 시·군 코스</p>
+  </div>
+</section>
+
+<section id="results" style="background:#F5EEE3;padding:clamp(64px,9vw,112px) clamp(20px,4vw,32px)">
+  <div style="max-width:1160px;margin:0 auto">
+    <div style="display:flex;align-items:center;gap:10px">
+      <span style="display:block;width:24px;height:2px;background:#F37D21"></span>
+      <span style="font-size:14px;font-weight:600;letter-spacing:.08em;color:#B85410">RECORD</span>
+    </div>
+    <h2 style="margin:12px 0 0;font-size:clamp(1.625rem,3.6vw,2.625rem);font-weight:700;line-height:1.3;letter-spacing:-.02em;color:#241F45;word-break:keep-all">이미 여섯 가족이 다녀갔습니다</h2>
+    <p style="margin:16px 0 0;max-width:640px;font-size:1.1875rem;line-height:1.8;color:#6B6480;word-break:keep-all">2025년 11월 1차 실증에서 남은 기록입니다.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:48px;align-items:stretch">
+      <figure style="margin:0;position:relative;display:flex;align-items:flex-end;border-radius:28px;overflow:hidden;border:1px solid #E6DCCC;min-height:clamp(280px,32vw,420px);background:repeating-linear-gradient(135deg,#EFE6D8 0 12px,#E7DCCB 12px 24px)">
+        <span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(45,42,111,0) 40%,rgba(45,42,111,.7) 100%)"></span>
+        <figcaption style="position:relative;padding:24px;color:#FDFBF7;font-size:1.0625rem;font-weight:600;word-break:keep-all">1차 실증 · 농촌체험 활동<br><span style="font:11px ui-monospace,Menlo,monospace;font-weight:400;color:rgba(253,251,247,.8)">[대표 사진 — 가로 3:2 권장]</span></figcaption>
+      </figure>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+        <figure style="margin:0;position:relative;display:flex;align-items:flex-end;border-radius:20px;overflow:hidden;border:1px solid #E6DCCC;min-height:130px;background:repeating-linear-gradient(135deg,#EFE6D8 0 12px,#E7DCCB 12px 24px)">
+          <span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(45,42,111,0) 45%,rgba(45,42,111,.68) 100%)"></span>
+          <figcaption style="position:relative;padding:14px 16px;color:#FDFBF7;font-size:15px;font-weight:600;word-break:keep-all">베이커리 만들기</figcaption>
+        </figure>
+        <figure style="margin:0;position:relative;display:flex;align-items:flex-end;border-radius:20px;overflow:hidden;border:1px solid #E6DCCC;min-height:130px;background:repeating-linear-gradient(135deg,#EFE6D8 0 12px,#E7DCCB 12px 24px)">
+          <span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(45,42,111,0) 45%,rgba(45,42,111,.68) 100%)"></span>
+          <figcaption style="position:relative;padding:14px 16px;color:#FDFBF7;font-size:15px;font-weight:600;word-break:keep-all">청자 조각 체험</figcaption>
+        </figure>
+        <figure style="margin:0;position:relative;display:flex;align-items:flex-end;border-radius:20px;overflow:hidden;border:1px solid #E6DCCC;min-height:130px;background:repeating-linear-gradient(135deg,#EFE6D8 0 12px,#E7DCCB 12px 24px)">
+          <span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(45,42,111,0) 45%,rgba(45,42,111,.68) 100%)"></span>
+          <figcaption style="position:relative;padding:14px 16px;color:#FDFBF7;font-size:15px;font-weight:600;word-break:keep-all">저녁 돌봄 시간</figcaption>
+        </figure>
+        <figure style="margin:0;position:relative;display:flex;align-items:flex-end;border-radius:20px;overflow:hidden;border:1px solid #E6DCCC;min-height:130px;background:repeating-linear-gradient(135deg,#EFE6D8 0 12px,#E7DCCB 12px 24px)">
+          <span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(45,42,111,0) 45%,rgba(45,42,111,.68) 100%)"></span>
+          <figcaption style="position:relative;padding:14px 16px;color:#FDFBF7;font-size:15px;font-weight:600;word-break:keep-all">마지막 날, 다시 함께</figcaption>
+        </figure>
+      </div>
+    </div>
+    <p style="margin:14px 0 0;font:12px/1.6 ui-monospace,Menlo,monospace;color:#6B6480">사진 자리 — 아동의 얼굴이 식별되지 않는 뒷모습·손·활동 장면으로 배치</p>
+
+    <figure style="margin:48px 0 0;background:#FFFFFF;border:1px solid #E6DCCC;border-radius:28px;padding:clamp(28px,4vw,48px)">
+      <span style="display:block;font-size:64px;line-height:.8;color:#F37D21;font-weight:700">“</span>
+      <blockquote style="margin:12px 0 0;font-size:clamp(1.125rem,2.2vw,1.5rem);line-height:1.7;letter-spacing:-.01em;color:#241F45;word-break:keep-all;max-width:32em">아이에게는 전문적인 돌봄을, 부모에게는 진정한 휴식을 선물해 준 최고의 시간이었습니다. <strong style="color:#241F45">다음에도 꼭 다시 참여하고 싶습니다.</strong></blockquote>
+      <figcaption style="margin-top:20px;font-size:15px;color:#6B6480">— 2025년 11월 참가 부모</figcaption>
+    </figure>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-top:48px">
+      <div style="border-top:1px solid #E6DCCC;padding-top:20px">
+        <div style="font-size:clamp(1.375rem,2.4vw,1.875rem);font-weight:700;line-height:1.1;letter-spacing:-.03em;color:#2D2A6F;font-variant-numeric:tabular-nums">2025.11.21~23</div>
+        <p style="margin:10px 0 0;font-size:1.0625rem;line-height:1.7;color:#6B6480">1차 실증 운영</p>
+      </div>
+      <div style="border-top:1px solid #E6DCCC;padding-top:20px">
+        <div style="font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.1;letter-spacing:-.03em;color:#2D2A6F;font-variant-numeric:tabular-nums">6가족 15명</div>
+        <p style="margin:10px 0 0;font-size:1.0625rem;line-height:1.7;color:#6B6480">수도권 발달장애 아동 가족 참가</p>
+      </div>
+      <div style="border-top:1px solid #E6DCCC;padding-top:20px">
+        <div style="font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.1;letter-spacing:-.03em;color:#2D2A6F;font-variant-numeric:tabular-nums">2박 3일</div>
+        <p style="margin:10px 0 0;font-size:1.0625rem;line-height:1.7;color:#6B6480">체류형 운영</p>
+      </div>
+      <div style="border-top:1px solid #E6DCCC;padding-top:20px">
+        <div style="font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.1;letter-spacing:-.03em;color:#2D2A6F;font-variant-numeric:tabular-nums">3개 시·군</div>
+        <p style="margin:10px 0 0;font-size:1.0625rem;line-height:1.7;color:#6B6480">강진 · 완도 · 나주 연계</p>
+      </div>
+    </div>
+    <div style="margin-top:40px;background:#FDEEDF;border-radius:20px;padding:clamp(24px,3vw,32px)">
+      <span style="font-size:14px;font-weight:600;letter-spacing:.08em;color:#B85410">2026년 목표</span>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-top:16px">
+        <p style="margin:0;font-size:1.0625rem;line-height:1.7;color:#3D3757">생활인구 <strong style="color:#241F45">20가족 60명</strong></p>
+        <p style="margin:0;font-size:1.0625rem;line-height:1.7;color:#3D3757">지역 소비 창출 <strong style="color:#241F45">200만원 이상</strong></p>
+        <p style="margin:0;font-size:1.0625rem;line-height:1.7;color:#3D3757">지역 고용 창출 <strong style="color:#241F45">4명</strong></p>
+      </div>
+    </div>
+
+    <div style="margin-top:clamp(56px,7vw,88px);padding-top:clamp(40px,5vw,56px);border-top:1px solid #D3C5AF">
+      <h3 style="margin:0;font-size:clamp(1.375rem,2.6vw,1.875rem);font-weight:700;line-height:1.3;letter-spacing:-.02em;color:#241F45;word-break:keep-all">함께 만들고 있습니다</h3>
+      <article style="margin-top:24px;background:#FFFFFF;border:1px solid #E6DCCC;border-radius:20px;padding:clamp(24px,3vw,32px);max-width:760px">
+        <h4 style="margin:0;font-size:clamp(1.125rem,2vw,1.375rem);font-weight:600;line-height:1.5;color:#241F45;word-break:keep-all">「강진·완도·나주 잇는 힐링 여행, 발달장애 가족에 ‘온전한 쉼’ 선물」</h4>
+        <p style="margin:12px 0 0;font-size:15px;color:#6B6480;font-variant-numeric:tabular-nums">연합인포맥스 · 2026.01.28</p>
+      </article>
+      <div style="margin-top:32px">
+      <span style="font-size:14px;font-weight:600;letter-spacing:.08em;color:#6B6480">협력 기관</span>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:14px">
+        <span style="display:inline-flex;align-items:center;justify-content:center;height:56px;padding:0 22px;border-radius:14px;background:#FFFFFF;border:1px solid #E6DCCC;font-size:15px;font-weight:500;color:#6B6480">한국관광공사</span>
+        <span style="display:inline-flex;align-items:center;justify-content:center;height:56px;padding:0 22px;border-radius:14px;background:#FFFFFF;border:1px solid #E6DCCC;font-size:15px;font-weight:500;color:#6B6480">강진군청</span>
+        <span style="display:inline-flex;align-items:center;justify-content:center;height:56px;padding:0 22px;border-radius:14px;background:#FFFFFF;border:1px solid #E6DCCC;font-size:15px;font-weight:500;color:#6B6480">농업법인 수경당</span>
+        <span style="display:inline-flex;align-items:center;justify-content:center;height:56px;padding:0 22px;border-radius:14px;background:#FFFFFF;border:1px solid #E6DCCC;font-size:15px;font-weight:500;color:#6B6480">대학작업치료사협회 광주전남지회</span>
+        <span style="display:inline-flex;align-items:center;justify-content:center;height:56px;padding:0 22px;border-radius:14px;background:#FFFFFF;border:1px solid #E6DCCC;font-size:15px;font-weight:500;color:#6B6480">이츠율</span>
+        <span style="display:inline-flex;align-items:center;justify-content:center;height:56px;padding:0 22px;border-radius:14px;background:#FFFFFF;border:1px solid #E6DCCC;font-size:15px;font-weight:500;color:#6B6480">동호랑</span>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="partners" style="background:#2D2A6F;padding:clamp(64px,9vw,112px) clamp(20px,4vw,32px)">
+  <div style="max-width:1160px;margin:0 auto">
+    <div style="display:flex;align-items:center;gap:10px">
+      <span style="display:block;width:24px;height:2px;background:#F37D21"></span>
+      <span style="font-size:14px;font-weight:600;letter-spacing:.08em;color:#F37D21">FOR PARTNERS</span>
+    </div>
+    <h2 style="margin:12px 0 0;font-size:clamp(1.625rem,3.6vw,2.625rem);font-weight:700;line-height:1.3;letter-spacing:-.02em;color:#FDFBF7;word-break:keep-all">임직원 복지, 지자체 위탁, 기관 연계</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:48px">
+      <article style="background:rgba(253,251,247,.07);border:1px solid rgba(253,251,247,.16);border-radius:20px;padding:clamp(24px,3vw,32px)">
+        <h3 style="margin:0;font-size:1.3125rem;font-weight:600;line-height:1.4;color:#FDFBF7;word-break:keep-all">기업 CSR / 임직원 복지</h3>
+        <p style="margin:12px 0 0;font-size:1.0625rem;line-height:1.8;color:rgba(253,251,247,.8);word-break:keep-all">소속 발달장애 가족 임직원을 위한 복지 프로그램으로 연계 운영합니다.</p>
+      </article>
+      <article style="background:rgba(253,251,247,.07);border:1px solid rgba(253,251,247,.16);border-radius:20px;padding:clamp(24px,3vw,32px)">
+        <h3 style="margin:0;font-size:1.3125rem;font-weight:600;line-height:1.4;color:#FDFBF7;word-break:keep-all">지자체 · 교육청 위탁</h3>
+        <p style="margin:12px 0 0;font-size:1.0625rem;line-height:1.8;color:rgba(253,251,247,.8);word-break:keep-all">특수교육지원청, 인구감소지역 대응 기금 연계 위탁 운영이 가능합니다.</p>
+      </article>
+      <article style="background:rgba(253,251,247,.07);border:1px solid rgba(253,251,247,.16);border-radius:20px;padding:clamp(24px,3vw,32px)">
+        <h3 style="margin:0;font-size:1.3125rem;font-weight:600;line-height:1.4;color:#FDFBF7;word-break:keep-all">장애인 여행 바우처 연계</h3>
+        <p style="margin:12px 0 0;font-size:1.0625rem;line-height:1.8;color:rgba(253,251,247,.8);word-break:keep-all">장애인 여행 바우처 제공기관 등록을 추진하고 있습니다.</p>
+      </article>
+    </div>
+    <a href="#apply" style="display:inline-flex;align-items:center;height:52px;padding:0 28px;margin-top:40px;border-radius:14px;background:#F37D21;color:#2D2A6F;font-size:17px;font-weight:600;transition:transform .18s ease-out" style-hover="transform:translateY(-2px);color:#2D2A6F">파트너십 제안서 요청</a>
+  </div>
+</section>
+
+<section id="about" style="background:#FDFBF7;padding:clamp(64px,9vw,112px) clamp(20px,4vw,32px)">
+  <div style="max-width:1160px;margin:0 auto">
+    <h2 style="margin:0;font-size:clamp(1.625rem,3.6vw,2.625rem);font-weight:700;line-height:1.3;letter-spacing:-.02em;color:#241F45;word-break:keep-all">삼이일심은</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(24px,4vw,48px);margin-top:40px;align-items:start">
+      <p style="margin:0;max-width:20em;font-size:clamp(1.125rem,2.2vw,1.5rem);line-height:1.7;letter-spacing:-.01em;color:#241F45;word-break:keep-all">인구감소지역에서, 관광 취약계층의 휴식권과 행복추구권을 실현하는 <strong style="color:#B85410">복지와 관광의 융합 모델</strong>을 만듭니다.</p>
+      <dl style="margin:0;background:#FFFFFF;border:1px solid #E6DCCC;border-radius:20px;padding:clamp(24px,3vw,32px);display:grid;grid-template-columns:auto 1fr;gap:14px 20px;font-size:1.0625rem;line-height:1.7">
+        <dt style="color:#6B6480">상호</dt><dd style="margin:0;color:#241F45;font-weight:600">(주)삼이일심</dd>
+        <dt style="color:#6B6480">상태</dt><dd style="margin:0;color:#241F45;font-weight:600">사회적기업 인증 추진 중</dd>
+        <dt style="color:#6B6480">사업</dt><dd style="margin:0;color:#241F45;font-weight:600;word-break:keep-all">발달장애 가족 특화 체류형 복지관광</dd>
+        <dt style="color:#6B6480">거점</dt><dd style="margin:0;color:#241F45;font-weight:600">전남 강진군 병영면</dd>
+      </dl>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:40px">
+      <article style="background:#EAF0E6;border-radius:20px;padding:24px 26px">
+        <span style="font-size:14px;font-weight:700;letter-spacing:.08em;color:#5F7A5A">[E] 친환경 로컬 관광</span>
+        <p style="margin:12px 0 0;font-size:1.0625rem;line-height:1.8;color:#3D3757;word-break:keep-all">저탄소 모빌리티(셔틀·1,000원 택시), 제로 웨이스트, 에코 테라피</p>
+      </article>
+      <article style="background:#EAF0E6;border-radius:20px;padding:24px 26px">
+        <span style="font-size:14px;font-weight:700;letter-spacing:.08em;color:#5F7A5A">[S] 포용적 지역사회</span>
+        <p style="margin:12px 0 0;font-size:1.0625rem;line-height:1.8;color:#3D3757;word-break:keep-all">향유권 확대, 지역 활동지원사 유급 채용, 차세대 복지 전문가 양성</p>
+      </article>
+      <article style="background:#EAF0E6;border-radius:20px;padding:24px 26px">
+        <span style="font-size:14px;font-weight:700;letter-spacing:.08em;color:#5F7A5A">[G] 투명한 거버넌스</span>
+        <p style="margin:12px 0 0;font-size:1.0625rem;line-height:1.8;color:#3D3757;word-break:keep-all">민관학 협의체 운영, 참가 가족 VOC 기반 의사결정, 성과 데이터 공개</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="apply" style="background:#F37D21;padding:clamp(64px,9vw,112px) clamp(20px,4vw,32px)">
+  <div style="max-width:1160px;margin:0 auto">
+    <h2 style="margin:0;max-width:22em;font-size:clamp(1.75rem,4vw,3rem);font-weight:700;line-height:1.25;letter-spacing:-.025em;color:#2D2A6F;word-break:keep-all">이번에는, 온전히 쉬어 보시겠어요?</h2>
+    <p style="margin:20px 0 0;max-width:38em;font-size:clamp(1.0625rem,2vw,1.25rem);line-height:1.7;color:#2D2A6F;word-break:keep-all">회차별 정원 4가족. 문의 후 상담을 통해 아이의 특성에 맞는 지원을 함께 설계합니다.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:32px">
+      <a href="mailto:hello@samiilsim.kr" style="display:inline-flex;align-items:center;height:52px;padding:0 28px;border-radius:14px;background:#2D2A6F;color:#FDFBF7;font-size:17px;font-weight:600;transition:transform .18s ease-out" style-hover="transform:translateY(-2px);color:#FDFBF7">개인 문의하기</a>
+      <a href="#partners" style="display:inline-flex;align-items:center;height:52px;padding:0 28px;border-radius:14px;background:#FDFBF7;color:#2D2A6F;font-size:17px;font-weight:600;transition:transform .18s ease-out" style-hover="transform:translateY(-2px);color:#2D2A6F">기업·기관 파트너십 문의하기</a>
+      <a href="tel:0000000000" style="display:inline-flex;align-items:center;height:52px;padding:0 28px;border-radius:14px;border:2px solid #2D2A6F;color:#2D2A6F;font-size:17px;font-weight:600;transition:transform .18s ease-out" style-hover="transform:translateY(-2px);color:#2D2A6F">전화 상담</a>
+    </div>
+  </div>
+</section>
+
+<footer style="background:#221F52;padding:clamp(48px,7vw,80px) clamp(20px,4vw,32px) 40px">
+  <div style="max-width:1160px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px">
+      <div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <span style="display:flex;flex-direction:column;justify-content:center;gap:3px;width:34px;height:34px;background:#FDFBF7;border-radius:8px;padding:8px 7px">
+            <span style="display:block;height:2px;background:#221F52;border-radius:2px"></span>
+            <span style="display:block;height:2px;background:#221F52;border-radius:2px"></span>
+            <span style="display:block;height:2px;width:60%;background:#221F52;border-radius:2px"></span>
+          </span>
+          <span style="font-size:17px;font-weight:700;color:#FDFBF7">(주)삼이일심</span>
+        </div>
+        <p style="margin:20px 0 0;font-size:15px;line-height:1.9;color:rgba(253,251,247,.72)">대표자 홍길동 · 사업자등록번호 000-00-00000<br>전남 강진군 병영면<br>대표전화 000-0000-0000 · hello@samiilsim.kr</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <a href="#top" style="font-size:15px;color:rgba(253,251,247,.72)">개인정보처리방침</a>
+        <a href="#top" style="font-size:15px;color:rgba(253,251,247,.72)">이용약관</a>
+        <a href="#partners" style="font-size:15px;color:rgba(253,251,247,.72)">기업·기관 문의</a>
+      </div>
+      <div>
+        <span style="font-size:13px;font-weight:600;letter-spacing:.08em;color:rgba(253,251,247,.5)">지원사업</span>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px">
+          <span style="display:inline-flex;align-items:center;height:38px;padding:0 14px;border-radius:8px;border:1px solid rgba(253,251,247,.24);font-size:14px;color:rgba(253,251,247,.8)">한국관광공사</span>
+          <span style="display:inline-flex;align-items:center;height:38px;padding:0 14px;border-radius:8px;border:1px solid rgba(253,251,247,.24);font-size:14px;color:rgba(253,251,247,.8)">2026년 BETTER里 지원사업</span>
+          <span style="display:inline-flex;align-items:center;height:38px;padding:0 14px;border-radius:8px;border:1px solid rgba(253,251,247,.24);font-size:14px;color:rgba(253,251,247,.8)">FUTURE BRIDGE 관광벤처 지원사업</span>
+        </div>
+      </div>
+    </div>
+    <p style="margin:40px 0 0;padding-top:24px;border-top:1px solid rgba(253,251,247,.16);font-size:14px;color:rgba(253,251,247,.5)">© 2026 (주)삼이일심</p>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;animateTimeline&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;동작&quot;}}">
+class Component extends DCLogic {
+  state = { open: 0 };
+
+  bar(animate, left, width) {
+    const base = "position:absolute;top:0;bottom:0;left:" + left.toFixed(2) + "%;width:" + width.toFixed(2) + "%;background:#F37D21;border-radius:999px;transform-origin:left center";
+    return animate ? base + ";animation:fillBar 700ms cubic-bezier(.16,1,.3,1) both" : base;
+  }
+
+  renderVals() {
+    const animate = this.props.animateTimeline ?? true;
+
+    const days = [
+      { n: "1일차", title: "진입과 해방", items: [
+        "14시 거점 도착",
+        "숙소 배정 (수경당)",
+        "아동: 중식 · 거점 특화프로그램 · 농촌체험 형제자매: 청자박물관 관람 및 체험",
+        "18~20시: 저녁 돌봄 (석식, 위생 지원, 자유활동)",
+        "부모: 20시까지 자유 휴식 및 관광" ] },
+      { n: "2일차", title: "온전한 쉼", items: [
+        "아동: 베이커리 만들기 · 중식 · 전통시장 장보기 · 숲 체험(또는 물놀이)",
+        "형제자매: 베이커리 체험 · 민화뮤지엄 · 지역 아동과 게이미피케이션 활동",
+        "18~20시: 저녁 돌봄",
+        "부모: 20시까지 자유 휴식 및 관광" ] },
+      { n: "3일차", title: "재통합", items: [
+        "10~12시: 부모와 함께 프로그램 · 사진 촬영 · 기념품 전달",
+        "12~13시 나주역 도착 (이동 지원)" ] }
+    ];
+    const SCALE_FROM = 10, SCALE_TO = 20, SCALE = SCALE_TO - SCALE_FROM;
+    const spans = [
+      { from: 14, to: 20, mid: "6시간 케어" },
+      { from: 10, to: 20, mid: "10시간 풀케어" },
+      { from: 10, to: 13, mid: "재통합" }
+    ];
+    spans.forEach((s, i) => {
+      const d = days[i];
+      d.start = SCALE_FROM + "시";
+      d.end = SCALE_TO + "시";
+      d.mid = s.mid;
+      d.midStyle = "color:#B85410;font-weight:600";
+      d.barStyle = this.bar(animate, ((s.from - SCALE_FROM) / SCALE) * 100, ((s.to - s.from) / SCALE) * 100);
+    });
+
+    const compare = [
+      { label: "돌봄 시간", a: "대부분 17:00~18:00 종료", b: "20:00까지 야간 풀케어" },
+      { label: "지원 인력", a: "자원봉사자 또는 1:N 케어", b: "치료사 1명 + 보조교사 4명(1:1 밀착) + 20시까지 저녁 돌봄" },
+      { label: "타겟 범위", a: "장애 아동 중심, 형제자매 소외", b: "장애·비장애 형제자매 맞춤형 이원화" },
+      { label: "지역 상생", a: "대형 리조트 중심의 폐쇄적 소비", b: "지역 숙박·식당·체험기관 연계" }
+    ];
+
+    const tileNames = ["강진 푸소(FU-SO) 농촌체험", "청자박물관", "민화뮤지엄", "가우도", "병영면 전통시장", "완도해양치유센터"];
+    const ratios = ["4/3", "4/5", "4/3.4", "4/3.4", "4/3", "4/5"];
+    const tiles = tileNames.map((name, i) => ({
+      name,
+      style: "margin:0;position:relative;display:flex;align-items:flex-end;border-radius:28px;overflow:hidden;border:1px solid #E6DCCC;aspect-ratio:" + ratios[i] +
+        ";background:repeating-linear-gradient(135deg,#EFE6D8 0 12px,#E7DCCB 12px 24px);transition:transform 400ms ease-out"
+    }));
+
+    return { days, compare, tiles };
+  }
+}
+</script>
+</body>
+</html>

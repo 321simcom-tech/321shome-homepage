@@ -1,0 +1,206 @@
+{
+  "site": {
+    "name": "삼이일심",
+    "tagline": "강진형 복지관광 · 2026"
+  },
+  "nav": {
+    "items": [
+      { "label": "프로그램", "href": "#program" },
+      { "label": "안심 케어", "href": "#care" },
+      { "label": "강진 이야기", "href": "#gangjin" },
+      { "label": "실증 성과", "href": "#results" },
+      { "label": "회사 소개", "href": "#about" }
+    ],
+    "partnersLink": "기업·기관 문의",
+    "cta": "참가 신청"
+  },
+  "hero": {
+    "badge": "한국관광공사 2026 BETTER里 지원사업 선정",
+    "titlePlain": "쉬는 것은",
+    "titleHighlight": "당연합니다",
+    "titleLine2": "그 시간, 아이는 안전합니다.",
+    "subcopy": "발달장애 아동을 전문 인력이 20시까지 돌보는 동안, 부모는 강진에서 온전히 쉬는 2박 3일.",
+    "chips": ["20시까지 풀케어", "1:1 밀착 지원", "비장애 형제자매 동반"],
+    "ctaPrimary": "개인 문의",
+    "ctaPrimaryHref": "#apply",
+    "ctaSecondary": "기업·기관 파트너십 문의",
+    "ctaSecondaryHref": "#partners",
+    "photoImage": "images/placeholder-hero.svg",
+    "photoAlt": "남도 풍경 속 부모의 뒷모습",
+    "photoCaption": "저녁 18시~20시, 활동지원사 4명이 아이 곁에 있습니다"
+  },
+  "problem": {
+    "heading": "여행이 또 다른 노동이 되지 않도록",
+    "cards": [
+      { "title": "돌봄은 24시간, 쉼은 0시간", "body": "대부분의 캠프는 17~18시에 종료됩니다. 저녁 시간의 돌봄 부담은 그대로 부모에게 돌아옵니다." },
+      { "title": "전문성 없는 지원 인력", "body": "자원봉사자 중심의 1:N 케어로는 발달장애 아동의 개별 특성에 맞춘 돌봄이 어렵습니다." },
+      { "title": "소외되는 비장애 형제자매", "body": "프로그램이 장애 아동 중심으로 짜이면서, 함께 온 형제자매는 갈 곳이 없습니다." }
+    ]
+  },
+  "solution": {
+    "heading": "의도된 분리와 통합",
+    "sub": "세 사람이 각자의 시간을 온전히 보내고, 하루의 끝에 다시 만납니다.",
+    "roles": [
+      { "tag": "발달장애 아동", "title": "1:1 안심 케어", "body": "치료가 아닌 온전한 쉼과 자발적 활동 지원. SST 캠프 — Stay Strong Together." },
+      { "tag": "비장애 형제자매", "title": "맞춤형 체험", "body": "청자 조각 체험, 민화뮤지엄 관람, 강진 아동과의 교류 활동." },
+      { "tag": "부모", "title": "20시까지 온전한 쉼", "body": "아무것도 하지 않을 자유. 동료 부모와의 티타임, 지역 투어 등 선택형 힐링." }
+    ],
+    "diagramLabels": ["아동\n1:1 케어", "형제자매\n맞춤 체험", "부모\n온전한 쉼"],
+    "diagramBadge": "20시 — 다시 함께",
+    "timelineNote": "낮에는 각자의 시간, 저녁에는 다시 한 가족.\n돌봄 공백 없이 하루가 이어집니다.",
+    "timelineItems": [
+      { "time": "10–18시", "text": "아동·형제자매·부모가 각자의 동선으로 나뉩니다" },
+      { "time": "18–20시", "text": "활동지원사 4명이 아이 곁에, 부모는 자유 시간" },
+      { "time": "20시", "text": "숙소에서 다시 함께, 하루를 마무리합니다" }
+    ]
+  },
+  "compare": {
+    "heading": "일반 가족 여행과 무엇이 다른가",
+    "rows": [
+      { "label": "돌봄 시간", "a": "대부분 17:00~18:00 종료", "b": "20:00까지 야간 풀케어" },
+      { "label": "지원 인력", "a": "자원봉사자 또는 1:N 케어", "b": "치료사 1명 + 보조교사 4명(1:1 밀착) + 20시까지 저녁 돌봄" },
+      { "label": "타겟 범위", "a": "장애 아동 중심, 형제자매 소외", "b": "장애·비장애 형제자매 맞춤형 이원화" },
+      { "label": "지역 상생", "a": "대형 리조트 중심의 폐쇄적 소비", "b": "지역 숙박·식당·체험기관 연계 소비" }
+    ],
+    "closing": "부모의 야간 식사와 자유 시간을 보장하는 전국 유일 모델"
+  },
+  "schedule": {
+    "heading": "2박 3일, 이렇게 흘러갑니다",
+    "days": [
+      {
+        "n": "1일차", "title": "진입과 해방", "start": "10시", "end": "20시", "mid": "6시간 케어", "barFrom": 14, "barTo": 20,
+        "items": [
+          "14시 거점 도착",
+          "숙소 배정 (수경당)",
+          "아동: 중식 · 거점 특화프로그램 · 농촌체험 / 형제자매: 청자박물관 관람 및 체험",
+          "18~20시: 저녁 돌봄 (석식, 위생 지원, 자유활동)",
+          "부모: 20시까지 자유 휴식 및 관광"
+        ]
+      },
+      {
+        "n": "2일차", "title": "온전한 쉼", "start": "10시", "end": "20시", "mid": "10시간 풀케어", "barFrom": 10, "barTo": 20,
+        "items": [
+          "아동: 베이커리 만들기 · 중식 · 전통시장 장보기 · 숲 체험(또는 물놀이)",
+          "형제자매: 베이커리 체험 · 민화뮤지엄 · 지역 아동과 게이미피케이션 활동",
+          "18~20시: 저녁 돌봄",
+          "부모: 20시까지 자유 휴식 및 관광"
+        ]
+      },
+      {
+        "n": "3일차", "title": "재통합", "start": "10시", "end": "20시", "mid": "재통합", "barFrom": 10, "barTo": 13,
+        "items": [
+          "10~12시: 부모와 함께 프로그램 · 사진 촬영 · 기념품 전달",
+          "12~13시 나주역 도착 (이동 지원)"
+        ]
+      }
+    ]
+  },
+  "care": {
+    "heading": "누가, 어떻게 아이 곁에 있나요",
+    "roles": [
+      { "count": "1", "unit": "명", "title": "작업치료사", "body": "프로그램 설계 및 안전 관리", "badge": "" },
+      { "count": "4", "unit": "명", "title": "보조교사", "body": "아동 밀착 지원", "badge": "1:1" },
+      { "count": "4", "unit": "명", "title": "활동지원사", "body": "저녁 시간(18~20시) 돌봄, 성별 매칭", "badge": "20시까지 풀케어" }
+    ],
+    "operatorTitle": "운영 담당자",
+    "operatorBody": "사회복지사 또는 활동지원사 자격 보유",
+    "expertGroupLabel": "협력 전문가 그룹",
+    "expertGroups": ["대학작업치료사협회 광주전남지회", "지역 활동지원사", "지역 대학 (보조교사)"]
+  },
+  "gangjin": {
+    "tag": "WHERE",
+    "heading": "부모가 쉬는 동안, 강진이 아이를 맞이합니다",
+    "tiles": [
+      { "name": "강진 푸소(FU-SO) 농촌체험", "image": "images/placeholder-tile.svg" },
+      { "name": "청자박물관", "image": "images/placeholder-tile.svg" },
+      { "name": "민화뮤지엄", "image": "images/placeholder-tile.svg" },
+      { "name": "가우도", "image": "images/placeholder-tile.svg" },
+      { "name": "병영면 전통시장", "image": "images/placeholder-tile.svg" },
+      { "name": "완도해양치유센터", "image": "images/placeholder-tile.svg" }
+    ],
+    "note": "나주생태습지공원, 완도 해양치유센터까지 연계한 남도 3개 시·군 코스"
+  },
+  "results": {
+    "heading": "이미 여섯 가족이 다녀갔습니다",
+    "sub": "2025년 11월 1차 실증에서 남은 기록입니다.",
+    "mainImage": "images/placeholder-wide.svg",
+    "mainCaption": "1차 실증 · 농촌체험 활동",
+    "gridImages": [
+      { "caption": "베이커리 만들기", "image": "images/placeholder-tile.svg" },
+      { "caption": "청자 조각 체험", "image": "images/placeholder-tile.svg" },
+      { "caption": "저녁 돌봄 시간", "image": "images/placeholder-tile.svg" },
+      { "caption": "마지막 날, 다시 함께", "image": "images/placeholder-tile.svg" }
+    ],
+    "testimonial": {
+      "quote": "아이에게는 전문적인 돌봄을, 부모에게는 진정한 휴식을 선물해 준 최고의 시간이었습니다. 다음에도 꼭 다시 참여하고 싶습니다.",
+      "author": "— 2025년 11월 참가 부모"
+    },
+    "stats": [
+      { "value": "2025.11.21~23", "label": "1차 실증 운영" },
+      { "value": "6가족 15명", "label": "수도권 발달장애 아동 가족 참가" },
+      { "value": "2박 3일", "label": "체류형 운영" },
+      { "value": "3개 시·군", "label": "강진 · 완도 · 나주 연계" }
+    ],
+    "goalsLabel": "2026년 목표",
+    "goals": [
+      "생활인구 20가족 60명",
+      "지역 소비 창출 200만원 이상",
+      "지역 고용 창출 4명"
+    ],
+    "newsHeading": "함께 만들고 있습니다",
+    "news": {
+      "title": "「강진·완도·나주 잇는 힐링 여행, 발달장애 가족에 '온전한 쉼' 선물」",
+      "source": "연합인포맥스 · 2026.01.28"
+    },
+    "partnersLabel": "협력 기관",
+    "partners": ["한국관광공사", "강진군청", "농업법인 수경당", "대학작업치료사협회 광주전남지회", "이츠율", "동호랑"]
+  },
+  "partners": {
+    "heading": "임직원 복지, 지자체 위탁, 기관 연계",
+    "cards": [
+      { "title": "기업 CSR / 임직원 복지", "body": "소속 발달장애 가족 임직원을 위한 복지 프로그램으로 연계 운영합니다." },
+      { "title": "지자체 · 교육청 위탁", "body": "특수교육지원청, 인구감소지역 대응 기금 연계 위탁 운영이 가능합니다." },
+      { "title": "장애인 여행 바우처 연계", "body": "장애인 여행 바우처 제공기관 등록을 추진하고 있습니다." }
+    ],
+    "cta": "파트너십 제안서 요청"
+  },
+  "about": {
+    "heading": "삼이일심은",
+    "lead": "인구감소지역에서, 관광 취약계층의 휴식권과 행복추구권을 실현하는 복지와 관광의 융합 모델을 만듭니다.",
+    "leadHighlight": "복지와 관광의 융합 모델",
+    "info": [
+      { "term": "상호", "value": "(주)삼이일심" },
+      { "term": "상태", "value": "사회적기업 인증 추진 중" },
+      { "term": "사업", "value": "발달장애 가족 특화 체류형 복지관광" },
+      { "term": "거점", "value": "전남 강진군 병영면" }
+    ],
+    "esg": [
+      { "tag": "[E] 친환경 로컬 관광", "body": "저탄소 모빌리티, 제로 웨이스트, 에코 테라피" },
+      { "tag": "[S] 포용적 지역사회", "body": "향유권 확대, 지역 활동지원사 유급 채용, 차세대 복지 전문가 양성" },
+      { "tag": "[G] 투명한 거버넌스", "body": "민관학 협의체 운영, 참가 가족 VOC 기반 의사결정, 성과 데이터 공개" }
+    ]
+  },
+  "apply": {
+    "heading": "이번에는, 온전히 쉬어 보시겠어요?",
+    "sub": "회차별 정원 4가족. 문의 후 상담을 통해 아이의 특성에 맞는 지원을 함께 설계합니다.",
+    "ctaEmail": "개인 문의",
+    "ctaPartner": "기업·기관 파트너십 문의",
+    "ctaPhone": "전화 상담",
+    "email": "hello@samiilsim.kr",
+    "phone": "0000000000"
+  },
+  "footer": {
+    "companyName": "(주)삼이일심",
+    "infoLine1": "대표자 홍길동 · 사업자등록번호 000-00-00000",
+    "infoLine2": "전남 강진군 병영면",
+    "infoLine3": "대표전화 000-0000-0000 · hello@samiilsim.kr",
+    "links": [
+      { "label": "개인정보처리방침", "href": "#top" },
+      { "label": "이용약관", "href": "#top" },
+      { "label": "기업·기관 문의", "href": "#partners" }
+    ],
+    "programsLabel": "지원사업",
+    "programs": ["한국관광공사", "2026년 BETTER里 지원사업", "FUTURE BRIDGE 관광벤처"],
+    "copyright": "© 2026 (주)삼이일심"
+  }
+}
