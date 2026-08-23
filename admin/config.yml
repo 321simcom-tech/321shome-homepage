@@ -296,13 +296,19 @@ collections:
             widget: object
             fields:
               - { label: "제목", name: "heading", widget: string }
-              - label: "질문/답변 목록"
-                name: "items"
+              - label: "카테고리 그룹"
+                name: "groups"
                 widget: list
-                summary: "{{fields.q}}"
+                summary: "{{fields.label}}"
                 fields:
-                  - { label: "질문", name: "q", widget: string }
-                  - { label: "답변", name: "a", widget: text }
+                  - { label: "그룹 이름", name: "label", widget: string }
+                  - label: "질문/답변 목록"
+                    name: "items"
+                    widget: list
+                    summary: "{{fields.q}}"
+                    fields:
+                      - { label: "질문", name: "q", widget: string }
+                      - { label: "답변", name: "a", widget: text, hint: "Enter 키를 누르면 그 위치에서 줄바꿈됩니다" }
 
           - label: "FINAL CTA(하단 마지막)"
             name: "finalCta"

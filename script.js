@@ -223,15 +223,18 @@
     document.getElementById("story-cta").href = "#faq";
     setupStoryCarousel(data.story.testimonials.length);
 
-    // faq
+    // faq (그룹별 아코디언)
     var faqList = document.getElementById("faq-list");
     faqList.innerHTML = "";
-    data.faq.items.forEach(function (f) {
-      var item = el("div", "faq-item");
-      item.innerHTML =
-        "<button type=\"button\" class=\"faq-q\"><span>" + f.q + "</span><span class=\"plus\"></span></button>" +
-        "<div class=\"faq-a\"><p>" + f.a + "</p></div>";
-      faqList.appendChild(item);
+    data.faq.groups.forEach(function (group) {
+      faqList.appendChild(el("h3", "faq-group-label", group.label));
+      group.items.forEach(function (f) {
+        var item = el("div", "faq-item");
+        item.innerHTML =
+          "<button type=\"button\" class=\"faq-q\"><span>" + f.q + "</span><span class=\"plus\"></span></button>" +
+          "<div class=\"faq-a\"><p>" + f.a + "</p></div>";
+        faqList.appendChild(item);
+      });
     });
 
     // final cta
