@@ -76,6 +76,22 @@
     applySectionVisibility(data);
     hydrateSimpleFields(data);
 
+    // 로고: 이미지가 등록되어 있으면 기본 아이콘 대신 표시
+    var hasLogo = !!data.site.logoImage;
+    ["brand", "footer"].forEach(function (prefix) {
+      var mark = document.getElementById(prefix + "-mark");
+      var logo = document.getElementById(prefix + "-logo");
+      if (!mark || !logo) return;
+      mark.style.display = hasLogo ? "none" : "";
+      if (hasLogo) {
+        applyResponsiveImage(logo, data.site.logoImage, [68, 136], "68px", 68);
+        logo.alt = data.site.name || "";
+        logo.style.display = "";
+      } else {
+        logo.style.display = "none";
+      }
+    });
+
     // header nav
     var nav = document.getElementById("main-nav");
     nav.innerHTML = "";

@@ -39,6 +39,7 @@ h1,h2,h3,h4{font-family:var(--font-h)}
 .brand-mark span{display:block;height:2px;background:var(--navy);border-radius:2px}
 .brand-mark span:nth-child(3){width:60%}
 .brand-name{font-family:var(--font-h);font-size:17px;font-weight:700;color:var(--navy);letter-spacing:-.02em}
+.brand-logo{height:34px;width:auto;flex:none}
 .nav-toggle{display:none;flex-direction:column;justify-content:center;align-items:stretch;gap:5px;width:38px;height:38px;padding:9px 8px;border:none;border-radius:8px;background:transparent;cursor:pointer;flex:none}
 .nav-toggle span{display:block;height:2px;background:var(--ink);border-radius:2px;transition:transform .2s ease-out,opacity .2s ease-out}
 .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
@@ -244,6 +245,7 @@ h1,h2,h3,h4{font-family:var(--font-h)}
 .footer-mark span{display:block;height:2px;background:var(--navy);border-radius:2px}
 .footer-mark span:nth-child(3){width:60%}
 .footer-name{font-family:var(--font-h);font-size:17px;font-weight:700;color:var(--paper)}
+.footer-logo{height:34px;width:auto;flex:none}
 .footer-links{display:flex;flex-direction:column;gap:10px}
 .footer-links a{font-size:15px;color:rgba(253,251,247,.72)}
 .footer-contact .label{color:rgba(253,251,247,.5)}

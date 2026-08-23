@@ -16,7 +16,7 @@
     "faq": true,
     "finalCta": true
   },
-  "site": { "name": "삼이일심", "tagline": "주식회사 삼이일심" },
+  "site": { "name": "삼이일심", "tagline": "주식회사 삼이일심", "logoImage": "" },
   "nav": {
     "items": [
       { "label": "왜 삼이일심인가?", "href": "#why" },
