@@ -10,6 +10,38 @@
     return e;
   }
 
+  // Netlify Image CDN: 업로드된 사진(jpg/png/webp/gif)을 요청 크기에 맞춰 자동 리사이즈·압축.
+  // 배포 환경(Netlify)에서만 동작하며, 로컬 미리보기에서는 원본이 그대로 표시됨.
+  function isRasterImage(path) {
+    return /\.(jpe?g|png|webp|gif)(\?.*)?$/i.test(path || "");
+  }
+  function imgUrl(path, width, quality) {
+    if (!path || !isRasterImage(path)) return path;
+    var absPath = "/" + String(path).replace(/^\/+/, "");
+    return "/.netlify/images?url=" + encodeURIComponent(absPath) + "&w=" + width + "&q=" + (quality || 75);
+  }
+  function imgSrcset(path, widths, quality) {
+    if (!path || !isRasterImage(path)) return "";
+    return widths.map(function (w) { return imgUrl(path, w, quality) + " " + w + "w"; }).join(", ");
+  }
+  function applyResponsiveImage(imgEl, path, widths, sizes, defaultWidth) {
+    if (!imgEl || !path) return;
+    imgEl.src = imgUrl(path, defaultWidth);
+    var srcset = imgSrcset(path, widths);
+    if (srcset) {
+      imgEl.setAttribute("srcset", srcset);
+      imgEl.setAttribute("sizes", sizes);
+    } else {
+      imgEl.removeAttribute("srcset");
+      imgEl.removeAttribute("sizes");
+    }
+  }
+  function responsiveImgTag(path, alt, widths, sizes, defaultWidth, extraAttrs) {
+    var srcset = imgSrcset(path, widths);
+    var srcsetAttr = srcset ? " srcset=\"" + srcset + "\" sizes=\"" + sizes + "\"" : "";
+    return "<img src=\"" + imgUrl(path, defaultWidth) + "\" alt=\"" + (alt || "") + "\"" + srcsetAttr + (extraAttrs || "") + ">";
+  }
+
   function hydrateSimpleFields(data) {
     document.querySelectorAll("[data-key]").forEach(function (node) {
       var val = get(data, node.getAttribute("data-key"));
@@ -26,7 +58,17 @@
     });
   }
 
+  function applySectionVisibility(data) {
+    var visibility = data.sectionVisibility || {};
+    document.querySelectorAll("[data-section]").forEach(function (section) {
+      var key = section.getAttribute("data-section");
+      var visible = visibility[key] !== false;
+      section.style.display = visible ? "" : "none";
+    });
+  }
+
   function render(data) {
+    applySectionVisibility(data);
     hydrateSimpleFields(data);
 
     // header nav
@@ -40,7 +82,7 @@
 
     // hero photo + chips
     var heroPhoto = document.getElementById("hero-photo");
-    if (data.hero.photoImage) heroPhoto.src = data.hero.photoImage;
+    applyResponsiveImage(heroPhoto, data.hero.photoImage, [480, 800, 1200], "(max-width:860px) 100vw, 560px", 800);
     var chips = document.getElementById("hero-chips");
     chips.innerHTML = "";
     data.hero.chips.forEach(function (c) {
@@ -146,18 +188,20 @@
     tiles.innerHTML = "";
     data.gangjin.tiles.forEach(function (t) {
       var fig = el("figure", "tile");
-      fig.innerHTML = "<img src=\"" + t.image + "\" alt=\"" + t.name + "\"><figcaption>" + t.name + "</figcaption>";
+      var imgTag = responsiveImgTag(t.image, t.name, [320, 480, 640], "(max-width:860px) 50vw, 33vw", 480, " loading=\"lazy\"");
+      fig.innerHTML = imgTag + "<figcaption>" + t.name + "</figcaption>";
       tiles.appendChild(fig);
     });
 
     // results
     var resultsMainImg = document.getElementById("results-main-img");
-    if (data.results.mainImage) resultsMainImg.src = data.results.mainImage;
+    applyResponsiveImage(resultsMainImg, data.results.mainImage, [480, 900, 1400], "(max-width:860px) 100vw, 700px", 900);
     var resultsGrid = document.getElementById("results-grid");
     resultsGrid.innerHTML = "";
     data.results.gridImages.forEach(function (g) {
       var fig = el("figure");
-      fig.innerHTML = "<img src=\"" + g.image + "\" alt=\"" + g.caption + "\"><figcaption>" + g.caption + "</figcaption>";
+      var imgTag = responsiveImgTag(g.image, g.caption, [240, 360, 480], "(max-width:860px) 50vw, 25vw", 360, " loading=\"lazy\"");
+      fig.innerHTML = imgTag + "<figcaption>" + g.caption + "</figcaption>";
       resultsGrid.appendChild(fig);
     });
 

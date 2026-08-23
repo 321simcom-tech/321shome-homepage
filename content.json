@@ -1,4 +1,16 @@
 {
+  "sectionVisibility": {
+    "problem": true,
+    "solution": true,
+    "compare": true,
+    "schedule": true,
+    "care": true,
+    "gangjin": true,
+    "results": true,
+    "partners": true,
+    "about": true,
+    "apply": true
+  },
   "nav": {
     "items": [
       {

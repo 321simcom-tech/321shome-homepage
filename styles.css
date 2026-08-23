@@ -14,7 +14,7 @@
   --inv-accent:#F37D21; --inv-hi-bg:rgba(243,125,33,.1);
 }
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);font-family:"Pretendard Variable",Pretendard,"Noto Sans KR",-apple-system,BlinkMacSystemFont,system-ui,"Malgun Gothic",sans-serif;color:var(--body-c);-webkit-font-smoothing:antialiased;overflow-x:hidden;word-break:keep-all;overflow-wrap:break-word}
+body{margin:0;background:var(--paper);font-family:"Pretendard Variable",Pretendard,"Noto Sans KR",-apple-system,BlinkMacSystemFont,system-ui,"Malgun Gothic",sans-serif;color:var(--body-c);-webkit-font-smoothing:antialiased;overflow-x:hidden;word-break:keep-all;overflow-wrap:break-word;white-space:pre-line}
 *{box-sizing:border-box}
 img{max-width:100%;display:block}
 a{color:var(--accent-deep);text-decoration:none}
@@ -60,7 +60,7 @@ button{font-family:inherit}
 .nav-panel{display:flex;align-items:center;gap:clamp(14px,3vw,36px);flex-wrap:wrap;flex:1 1 auto}
 
 @media (max-width:860px){
-  .nav-toggle{display:flex}
+  .nav-toggle{display:flex;margin-left:auto}
   .nav-panel{display:none;flex-basis:100%;flex-direction:column;align-items:stretch;gap:0;order:3;border-top:1px solid var(--line);margin-top:12px;padding-top:12px}
   .nav-panel.open{display:flex}
   .main-nav{flex-direction:column;align-items:stretch;gap:2px;width:100%}
