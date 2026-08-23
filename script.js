@@ -42,6 +42,13 @@
     return "<img src=\"" + imgUrl(path, defaultWidth) + "\" alt=\"" + (alt || "") + "\"" + srcsetAttr + (extraAttrs || "") + ">";
   }
 
+  var ICONS = {
+    parent: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7.5" r="3.3"/><path d="M5 20c0-4.2 3.1-7 7-7s7 2.8 7 7"/></svg>',
+    child: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 6.6L21 10l-5.4 4.2L17 21l-5-3.6L7 21l1.4-6.8L3 10l6.6-1.4z"/></svg>',
+    sibling: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="8" r="2.8"/><circle cx="16" cy="9" r="2.4"/><path d="M3 20c0-3.5 2.5-6 5.5-6s5.5 2.5 5.5 6M14 20c.3-2.8 2.3-5 4.5-5c2.4 0 4.3 2 4.5 5"/></svg>',
+    family: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="7.5" r="2.6"/><circle cx="17" cy="7.5" r="2.6"/><circle cx="12" cy="9.5" r="2.2"/><path d="M2 20c0-3.3 2.2-5.6 5-5.6M22 20c0-3.3-2.2-5.6-5-5.6M7.5 20c0-3 2-5 4.5-5s4.5 2 4.5 5"/></svg>'
+  };
+
   function hydrateSimpleFields(data) {
     document.querySelectorAll("[data-key]").forEach(function (node) {
       var val = get(data, node.getAttribute("data-key"));
@@ -58,45 +65,11 @@
     });
   }
 
-  // 섹션 배경 톤: a=밝은 종이+무늬, b=밝은 종이(무늬 없음), dark=어두운 강조.
-  // 섹션이 꺼지면 앞뒤로 남은 섹션끼리 같은 톤이 맞붙지 않도록 자동으로 재배정한다.
-  var SECTION_ORDER = ["problem", "solution", "compare", "schedule", "care", "gangjin", "results", "partners", "about"];
-  var SECTION_TONE = { problem: "b", solution: "a", compare: "dark", schedule: "b", care: "a", gangjin: "b", results: "a", partners: "dark", about: "b" };
-  var TONE_CLASSES = {
-    a: ["bg-paper", "textured"],
-    b: ["bg-paper2"],
-    dark: ["bg-inv"]
-  };
-  var ALL_TONE_CLASSES = ["bg-paper", "bg-paper2", "bg-inv", "textured"];
-
-  function applySectionVisibility(data) {
-    var visibility = data.sectionVisibility || {};
-    var prevTone = "a"; // 히어로 섹션 기준(밝은 톤)에서 시작
-
-    SECTION_ORDER.forEach(function (key) {
-      var section = document.querySelector('[data-section="' + key + '"]');
-      if (!section) return;
-      var visible = visibility[key] !== false;
-      section.style.display = visible ? "" : "none";
-      section.classList.remove("tone-divider");
-      ALL_TONE_CLASSES.forEach(function (c) { section.classList.remove(c); });
-      if (!visible) return;
-
-      var tone = SECTION_TONE[key];
-      if (tone !== "dark" && tone === prevTone) {
-        tone = tone === "a" ? "b" : "a"; // 밝은 톤끼리 연속되면 서로 바꿔서 리듬 유지
-      } else if (tone === "dark" && prevTone === "dark") {
-        section.classList.add("tone-divider"); // 어두운 섹션끼리 연속되면 구분선만 추가(색은 유지)
-      }
-      TONE_CLASSES[tone].forEach(function (c) { section.classList.add(c); });
-      prevTone = tone;
-    });
-
-    // apply 섹션은 항상 고정 강조색(주황)이라 톤 로테이션에서 제외, 노출 여부만 반영
-    var applySection = document.querySelector('[data-section="apply"]');
-    if (applySection) {
-      applySection.style.display = (visibility.apply !== false) ? "" : "none";
-    }
+  function fillPills(containerId, items) {
+    var container = document.getElementById(containerId);
+    if (!container) return;
+    container.innerHTML = "";
+    items.forEach(function (item) { container.appendChild(el("span", "pill", item)); });
   }
 
   function render(data) {
@@ -112,205 +85,160 @@
       nav.appendChild(a);
     });
 
-    // hero photo + chips
+    // hero
     var heroPhoto = document.getElementById("hero-photo");
-    applyResponsiveImage(heroPhoto, data.hero.photoImage, [480, 800, 1200], "(max-width:860px) 100vw, 560px", 800);
-    var chips = document.getElementById("hero-chips");
-    chips.innerHTML = "";
-    data.hero.chips.forEach(function (c) {
-      chips.appendChild(el("span", "chip", c));
+    applyResponsiveImage(heroPhoto, data.hero.photoImage, [480, 800, 1200], "(max-width:900px) 100vw, 560px", 800);
+    var heroValues = document.getElementById("hero-values");
+    heroValues.innerHTML = "";
+    data.hero.values.forEach(function (v) {
+      var item = el("div", "hero-value");
+      item.innerHTML =
+        "<span class=\"icon-badge\">" + (ICONS[v.icon] || "") + "</span>" +
+        "<span class=\"value-label\">" + v.label + "</span>" +
+        "<span class=\"value-sub\">" + v.sub + "</span>";
+      heroValues.appendChild(item);
     });
 
-    // problem cards
+    // problem
     var problemCards = document.getElementById("problem-cards");
     problemCards.innerHTML = "";
-    problemCards.classList.add("grid-auto");
-    var problemAccents = ["accent-deep", "accent-sage", "accent-plum"];
-    data.problem.cards.forEach(function (c, i) {
+    data.problem.cards.forEach(function (c) {
       var card = el("article", "card");
-      card.innerHTML =
-        "<span class=\"card-accent-bar " + (problemAccents[i % problemAccents.length]) + "\"></span>" +
-        "<h3>" + c.title + "</h3><p>" + c.body + "</p>";
+      var imgTag = responsiveImgTag(c.image, "", [320, 480, 640], "(max-width:860px) 50vw, 33vw", 480, " loading=\"lazy\"");
+      card.innerHTML = "<figure>" + imgTag + "</figure><p>" + c.body + "</p>";
       problemCards.appendChild(card);
     });
 
-    // solution role cards
+    // solution
     var roleCards = document.getElementById("role-cards");
-    var roleClasses = ["child", "sibling", "parent"];
     roleCards.innerHTML = "";
-    data.solution.roles.forEach(function (r, i) {
-      var card = el("article", "role-card " + (roleClasses[i] || ""));
+    data.solution.roles.forEach(function (r) {
+      var card = el("article", "role-card");
       card.innerHTML = "<span class=\"tag\">" + r.tag + "</span><h3>" + r.title + "</h3><p>" + r.body + "</p>";
       roleCards.appendChild(card);
     });
+    var reunionCard = document.getElementById("reunion-card");
+    reunionCard.innerHTML =
+      "<div><span class=\"tag\">" + data.solution.reunion.tag + "</span><h3>" + data.solution.reunion.title + "</h3></div>" +
+      "<p>" + data.solution.reunion.body + "</p>";
 
-    var diagramLabels = document.getElementById("diagram-labels");
-    diagramLabels.innerHTML = "";
-    data.solution.diagramLabels.forEach(function (l) {
-      diagramLabels.appendChild(el("span", null, l.replace("\n", "<br>")));
-    });
-
-    var timelineItems = document.getElementById("timeline-items");
-    timelineItems.innerHTML = "";
-    data.solution.timelineItems.forEach(function (t) {
-      var row = el("div", "timeline-item");
-      row.innerHTML = "<span class=\"timeline-time\">" + t.time + "</span><span class=\"timeline-text\">" + t.text + "</span>";
-      timelineItems.appendChild(row);
-    });
-
-    // compare
-    var compareRows = document.getElementById("compare-rows");
-    compareRows.innerHTML = "";
-    data.compare.rows.forEach(function (row) {
-      var wrap = el("div", "compare-row");
-      wrap.innerHTML =
-        "<div class=\"compare-label\">" + row.label + "</div>" +
-        "<div class=\"compare-a\"><span>일반 가족 여행 / 기존 복지 캠프</span><p>" + row.a + "</p></div>" +
-        "<div class=\"compare-b\"><span>강진형 복지관광 (삼이일심)</span><p><span class=\"compare-check\">" +
-        "<svg viewBox=\"0 0 16 16\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3.5 8.5L6.5 11.5L12.5 4.5\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>" +
-        "</span><span>" + row.b + "</span></p></div>";
-      compareRows.appendChild(wrap);
-    });
-
-    // schedule days
-    var dayCards = document.getElementById("day-cards");
-    dayCards.className = "grid day-cards";
-    dayCards.innerHTML = "";
-    var SF = 10, ST = 20, SC = ST - SF;
-    data.schedule.days.forEach(function (d) {
-      var left = ((d.barFrom - SF) / SC) * 100;
-      var width = ((d.barTo - d.barFrom) / SC) * 100;
+    // program overview
+    var programDays = document.getElementById("program-days");
+    programDays.innerHTML = "";
+    data.programOverview.days.forEach(function (d) {
       var card = el("article", "card day-card");
-      var itemsHtml = d.items.map(function (it) { return "<li>" + it + "</li>"; }).join("");
+      var itemsHtml = d.flow.map(function (it) { return "<li>" + it + "</li>"; }).join("");
       card.innerHTML =
-        "<span class=\"day-tag\">" + d.n + "</span>" +
-        "<h3>" + d.title + "</h3>" +
-        "<div class=\"day-bar-track\"><div class=\"day-bar-fill\" style=\"left:" + left.toFixed(2) + "%;width:" + width.toFixed(2) + "%\"></div></div>" +
-        "<div class=\"day-bar-labels\"><span>" + d.start + "</span><span class=\"mid\">" + d.mid + "</span><span>" + d.end + "</span></div>" +
-        "<ul class=\"day-items\">" + itemsHtml + "</ul>";
-      dayCards.appendChild(card);
+        "<span class=\"n\">" + d.n + "</span>" + (d.time ? "<span class=\"time\">" + d.time + "</span>" : "") +
+        "<h3>" + d.title + "</h3><ul>" + itemsHtml + "</ul>";
+      programDays.appendChild(card);
     });
 
-    // care roles
-    var careRoles = document.getElementById("care-roles");
-    careRoles.className = "grid care-roles";
-    careRoles.innerHTML = "";
-    data.care.roles.forEach(function (r) {
+    // day1
+    var day1Steps = document.getElementById("day1-steps");
+    day1Steps.innerHTML = "";
+    data.day1.steps.forEach(function (s) {
+      var row = el("div", "day-step");
+      row.innerHTML = "<span class=\"time\">" + s.time + "</span><span class=\"body\"><b>" + s.title + "</b>" + s.body + "</span>";
+      day1Steps.appendChild(row);
+    });
+    var day1Split = document.getElementById("day1-split");
+    day1Split.innerHTML = "";
+    data.day1.split.forEach(function (s) {
+      var item = el("div", "split-item");
+      item.innerHTML = "<div class=\"who\">" + s.who + "</div><div class=\"what\">" + s.what + "</div>";
+      day1Split.appendChild(item);
+    });
+
+    // day2
+    var day2Split = document.getElementById("day2-split");
+    day2Split.innerHTML = "";
+    data.day2.split.forEach(function (s) {
+      var item = el("div", "split-item");
+      item.innerHTML = "<div class=\"who\">" + s.who + "</div><div class=\"what\">" + s.what + "</div>";
+      day2Split.appendChild(item);
+    });
+    fillPills("day2-parent-time", data.day2.parentTimeItems);
+
+    // child care / sibling / parent free (feature sections)
+    applyResponsiveImage(document.getElementById("childcare-image"), data.childCare.image, [480, 800, 1100], "(max-width:860px) 100vw, 540px", 800);
+    fillPills("childcare-programs", data.childCare.programs);
+    document.getElementById("childcare-cta").href = "#care";
+
+    applyResponsiveImage(document.getElementById("sibling-image"), data.sibling.image, [480, 800, 1100], "(max-width:860px) 100vw, 540px", 800);
+    fillPills("sibling-programs", data.sibling.programs);
+    document.getElementById("sibling-cta").href = "#care";
+
+    applyResponsiveImage(document.getElementById("parentfree-image"), data.parentFree.image, [480, 800, 1100], "(max-width:860px) 100vw, 540px", 800);
+    fillPills("parentfree-activities", data.parentFree.activities);
+    document.getElementById("parentfree-cta").href = "#travel";
+
+    // day3 fullbleed
+    applyResponsiveImage(document.getElementById("day3-image"), data.day3.image, [700, 1200, 1800], "100vw", 1200);
+    var day3Flow = document.getElementById("day3-flow");
+    day3Flow.innerHTML = "";
+    data.day3.flow.forEach(function (f) { day3Flow.appendChild(el("span", null, f)); });
+
+    // why
+    var whyList = document.getElementById("why-list");
+    whyList.innerHTML = "";
+    data.why.items.forEach(function (w) {
+      var item = el("article", "why-item");
+      item.innerHTML =
+        "<div class=\"why-item-head\"><div><span class=\"n\">" + w.n + "</span><h3>" + w.title + "</h3></div>" +
+        "<span class=\"why-toggle-icon\">+</span></div>" +
+        "<p>" + w.body + "</p>";
+      whyList.appendChild(item);
+    });
+
+    // safety
+    var safetySteps = document.getElementById("safety-steps");
+    safetySteps.innerHTML = "";
+    data.safety.steps.forEach(function (s) {
+      var item = el("div", "safety-step");
+      item.innerHTML = "<span class=\"n\">" + s.n + "</span><h4>" + s.title + "</h4><p>" + s.body + "</p>";
+      safetySteps.appendChild(item);
+    });
+
+    // travel
+    var travelRegions = document.getElementById("travel-regions");
+    travelRegions.innerHTML = "";
+    data.travel.regions.forEach(function (r) {
       var card = el("article", "card");
-      var badgeHtml = "";
-      if (r.badge) {
-        var badgeClass = r.badge === "1:1" ? "strong" : "soft";
-        badgeHtml = "<span class=\"care-badge " + badgeClass + "\">" + r.badge + "</span>";
-      }
-      card.innerHTML =
-        "<div class=\"care-count\"><b>" + r.count + "</b><span>" + r.unit + "</span></div>" +
-        "<h3>" + r.title + "</h3><p>" + r.body + "</p>" + badgeHtml;
-      careRoles.appendChild(card);
+      card.innerHTML = "<h3>" + r.name + "</h3><p>" + r.body + "</p>";
+      travelRegions.appendChild(card);
     });
-    var operatorCard = el("article", "card");
-    operatorCard.innerHTML =
-      "<div class=\"care-operator-title\">" + data.care.operatorTitle + "</div>" +
-      "<p style=\"margin:8px 0 0;font-size:var(--fs-body);line-height:1.8;color:var(--body-c)\">" + data.care.operatorBody + "</p>";
-    careRoles.appendChild(operatorCard);
+    fillPills("travel-parent-items", data.travel.parentRecommendItems);
+    document.getElementById("travel-cta").href = "#story";
 
-    var expertList = document.getElementById("expert-list");
-    expertList.innerHTML = "";
-    data.care.expertGroups.forEach(function (g) {
-      expertList.appendChild(el("span", "pill", g));
+    // story
+    var storyTrack = document.getElementById("story-track");
+    storyTrack.innerHTML = "";
+    data.story.testimonials.forEach(function (t) {
+      var card = el("article", "testimonial-card");
+      card.innerHTML = "<span class=\"quote-mark\">&ldquo;</span><blockquote>" + t.quote + "</blockquote><figcaption>— " + t.author + "</figcaption>";
+      storyTrack.appendChild(card);
     });
+    fillPills("story-partners", data.story.partners);
+    document.getElementById("story-cta").href = "#faq";
+    setupStoryCarousel(data.story.testimonials.length);
 
-    // gangjin tiles
-    var tiles = document.getElementById("tiles");
-    tiles.className = "grid tiles";
-    tiles.innerHTML = "";
-    data.gangjin.tiles.forEach(function (t) {
-      var fig = el("figure", "tile");
-      var imgTag = responsiveImgTag(t.image, t.name, [320, 480, 640], "(max-width:860px) 50vw, 33vw", 480, " loading=\"lazy\"");
-      fig.innerHTML = imgTag + "<figcaption>" + t.name + "</figcaption>";
-      tiles.appendChild(fig);
+    // faq
+    var faqList = document.getElementById("faq-list");
+    faqList.innerHTML = "";
+    data.faq.items.forEach(function (f) {
+      var item = el("div", "faq-item");
+      item.innerHTML =
+        "<button type=\"button\" class=\"faq-q\"><span>" + f.q + "</span><span class=\"plus\"></span></button>" +
+        "<div class=\"faq-a\"><p>" + f.a + "</p></div>";
+      faqList.appendChild(item);
     });
 
-    // results
-    var resultsMainImg = document.getElementById("results-main-img");
-    applyResponsiveImage(resultsMainImg, data.results.mainImage, [480, 900, 1400], "(max-width:860px) 100vw, 700px", 900);
-    var resultsGrid = document.getElementById("results-grid");
-    resultsGrid.innerHTML = "";
-    data.results.gridImages.forEach(function (g) {
-      var fig = el("figure");
-      var imgTag = responsiveImgTag(g.image, g.caption, [240, 360, 480], "(max-width:860px) 50vw, 25vw", 360, " loading=\"lazy\"");
-      fig.innerHTML = imgTag + "<figcaption>" + g.caption + "</figcaption>";
-      resultsGrid.appendChild(fig);
-    });
-
-    var statGrid = document.getElementById("stat-grid");
-    statGrid.className = "grid stat-grid";
-    statGrid.innerHTML = "";
-    data.results.stats.forEach(function (s) {
-      var d = el("div", "stat");
-      d.innerHTML = "<div class=\"value\" data-final=\"" + s.value.replace(/"/g, "&quot;") + "\">" + s.value + "</div><p class=\"label\">" + s.label + "</p>";
-      statGrid.appendChild(d);
-    });
-    setupStatCountUp(statGrid);
-
-    var goalsGrid = document.getElementById("goals-grid");
-    goalsGrid.className = "grid goals-grid";
-    goalsGrid.innerHTML = "";
-    data.results.goals.forEach(function (g) {
-      goalsGrid.appendChild(el("p", null, g));
-    });
-
-    var resultsPartnersList = document.getElementById("results-partners-list");
-    resultsPartnersList.innerHTML = "";
-    data.results.partners.forEach(function (p) {
-      resultsPartnersList.appendChild(el("span", "pill", p));
-    });
-
-    // partners section
-    var partnerCards = document.getElementById("partner-cards");
-    partnerCards.className = "grid partner-cards";
-    partnerCards.innerHTML = "";
-    data.partners.cards.forEach(function (c) {
-      var card = el("article", "card partner-card");
-      card.innerHTML = "<h3>" + c.title + "</h3><p>" + c.body + "</p>";
-      partnerCards.appendChild(card);
-    });
-
-    // about
-    var aboutLead = document.getElementById("about-lead");
-    var leadHtml = data.about.lead;
-    if (data.about.leadHighlight && leadHtml.indexOf(data.about.leadHighlight) !== -1) {
-      leadHtml = leadHtml.replace(data.about.leadHighlight, "<strong>" + data.about.leadHighlight + "</strong>");
-    }
-    aboutLead.innerHTML = leadHtml;
-
-    var aboutInfo = document.getElementById("about-info");
-    aboutInfo.innerHTML = "";
-    data.about.info.forEach(function (row) {
-      aboutInfo.appendChild(el("dt", null, row.term));
-      aboutInfo.appendChild(el("dd", null, row.value));
-    });
-
-    var esgGrid = document.getElementById("esg-grid");
-    esgGrid.className = "grid esg-grid";
-    esgGrid.innerHTML = "";
-    data.about.esg.forEach(function (e) {
-      var card = el("article", "esg-card");
-      card.innerHTML = "<span class=\"tag\">" + e.tag + "</span><p>" + e.body + "</p>";
-      esgGrid.appendChild(card);
-    });
-
-    // apply ctas
-    var applyCtas = document.getElementById("apply-ctas");
-    applyCtas.innerHTML = "";
-    var mailA = el("a", "btn btn-dark", data.apply.ctaEmail);
-    mailA.href = "mailto:" + data.apply.email;
-    var partnerA = el("a", "btn btn-light", data.apply.ctaPartner);
-    partnerA.href = "#partners";
-    var phoneA = el("a", "btn btn-outline-dark", data.apply.ctaPhone);
-    phoneA.href = "tel:" + data.apply.phone;
-    applyCtas.appendChild(mailA);
-    applyCtas.appendChild(partnerA);
-    applyCtas.appendChild(phoneA);
+    // final cta
+    applyResponsiveImage(document.getElementById("finalcta-image"), data.finalCta.image, [700, 1200, 1800], "100vw", 1200);
+    var finalLines = document.getElementById("finalcta-lines");
+    finalLines.innerHTML = "";
+    data.finalCta.lines.forEach(function (l) { finalLines.appendChild(el("span", null, l)); });
 
     // footer
     var footerLinks = document.getElementById("footer-links");
@@ -322,63 +250,101 @@
       footerLinks.appendChild(a);
     });
     footerLinks.style.display = visibleLinks.length ? "" : "none";
+  }
 
-    var showPrograms = data.footer.showPrograms !== false;
-    var footerProgramsCol = document.getElementById("footer-programs");
-    footerProgramsCol.style.display = showPrograms ? "" : "none";
-    var footerProgramsList = document.getElementById("footer-programs-list");
-    footerProgramsList.innerHTML = "";
-    if (showPrograms) {
-      data.footer.programs.forEach(function (p) {
-        footerProgramsList.appendChild(el("span", "pill", p));
+  // 섹션 배경 톤: a=밝은 종이, b=밝은 종이(대체 톤). safety는 항상 고정 네이비.
+  // day3/finalCta는 사진 배경 섹션이라 톤 로테이션에서 제외하고 노출 여부만 반영.
+  var SECTION_ORDER = ["problem", "solution", "programOverview", "day1", "day2", "childCare", "sibling", "parentFree", "why", "safety", "travel", "story", "faq"];
+  var SECTION_TONE = { problem: "b", solution: "a", programOverview: "b", day1: "a", day2: "b", childCare: "a", sibling: "b", parentFree: "a", why: "b", safety: "dark", travel: "a", story: "b", faq: "a" };
+  var TONE_CLASSES = { a: ["bg-paper"], b: ["bg-paper2"], dark: ["bg-inv"] };
+  var ALL_TONE_CLASSES = ["bg-paper", "bg-paper2", "bg-inv"];
+  var FIXED_PHOTO_SECTIONS = ["day3", "finalCta"];
+
+  function applySectionVisibility(data) {
+    var visibility = data.sectionVisibility || {};
+    var prevTone = "a"; // 히어로 기준(밝은 톤)에서 시작
+
+    SECTION_ORDER.forEach(function (key) {
+      var section = document.querySelector('[data-section="' + key + '"]');
+      if (!section) return;
+      var visible = visibility[key] !== false;
+      section.style.display = visible ? "" : "none";
+      ALL_TONE_CLASSES.forEach(function (c) { section.classList.remove(c); });
+      if (!visible) return;
+
+      var tone = SECTION_TONE[key];
+      if (tone !== "dark" && tone === prevTone) {
+        tone = tone === "a" ? "b" : "a";
+      }
+      TONE_CLASSES[tone].forEach(function (c) { section.classList.add(c); });
+      prevTone = tone;
+    });
+
+    FIXED_PHOTO_SECTIONS.forEach(function (key) {
+      var section = document.querySelector('[data-section="' + key + '"]');
+      if (!section) return;
+      section.style.display = (visibility[key] !== false) ? "" : "none";
+    });
+  }
+
+  function setupWhyAccordion() {
+    var list = document.getElementById("why-list");
+    if (!list) return;
+    list.addEventListener("click", function (e) {
+      var item = e.target.closest(".why-item");
+      if (!item) return;
+      item.classList.toggle("open");
+    });
+  }
+
+  function setupFaqAccordion() {
+    var list = document.getElementById("faq-list");
+    if (!list) return;
+    list.addEventListener("click", function (e) {
+      var btn = e.target.closest(".faq-q");
+      if (!btn) return;
+      var item = btn.closest(".faq-item");
+      var wasOpen = item.classList.contains("open");
+      list.querySelectorAll(".faq-item.open").forEach(function (i) { i.classList.remove("open"); });
+      if (!wasOpen) item.classList.add("open");
+    });
+  }
+
+  function setupStoryCarousel(count) {
+    var track = document.getElementById("story-track");
+    var dotsWrap = document.getElementById("story-dots");
+    if (!track || !dotsWrap) return;
+    dotsWrap.innerHTML = "";
+    for (var i = 0; i < count; i++) {
+      var dot = el("button", i === 0 ? "active" : "");
+      dot.type = "button";
+      dot.setAttribute("aria-label", (i + 1) + "번째 후기로 이동");
+      dot.addEventListener("click", function (idx) {
+        return function () {
+          var card = track.children[idx];
+          if (card) card.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+        };
+      }(i));
+      dotsWrap.appendChild(dot);
+    }
+    var ticking = false;
+    track.addEventListener("scroll", function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        var trackCenter = track.scrollLeft + track.clientWidth / 2;
+        var closest = 0, closestDist = Infinity;
+        Array.from(track.children).forEach(function (card, idx) {
+          var dist = Math.abs((card.offsetLeft + card.offsetWidth / 2) - trackCenter);
+          if (dist < closestDist) { closestDist = dist; closest = idx; }
+        });
+        Array.from(dotsWrap.children).forEach(function (d, idx) { d.classList.toggle("active", idx === closest); });
+        ticking = false;
       });
-    }
-
-    var footerGrid = document.querySelector(".footer-grid");
-    if (footerGrid) {
-      footerGrid.classList.toggle("centered", !visibleLinks.length && !showPrograms);
-    }
+    }, { passive: true });
   }
 
   var prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  function animateCountUp(node, finalText, duration) {
-    var re = /\d+/g;
-    var matches = finalText.match(re);
-    if (!matches) { node.textContent = finalText; return; }
-    var start = null;
-    function frame(ts) {
-      if (start === null) start = ts;
-      var progress = Math.min((ts - start) / duration, 1);
-      var eased = 1 - Math.pow(1 - progress, 3);
-      var i = 0;
-      node.textContent = finalText.replace(re, function (m) {
-        var target = parseInt(m, 10);
-        var current = Math.round(target * eased);
-        i++;
-        var str = String(current);
-        while (str.length < m.length) str = "0" + str;
-        return str;
-      });
-      if (progress < 1) requestAnimationFrame(frame);
-    }
-    requestAnimationFrame(frame);
-  }
-
-  function setupStatCountUp(statGrid) {
-    var values = statGrid.querySelectorAll(".value[data-final]");
-    if (!values.length) return;
-    if (prefersReducedMotion || !("IntersectionObserver" in window)) return;
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          animateCountUp(entry.target, entry.target.getAttribute("data-final"), 1200);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.4 });
-    values.forEach(function (v) { observer.observe(v); });
-  }
 
   function setupScrollReveal() {
     var targets = document.querySelectorAll(".reveal");
@@ -394,7 +360,7 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+    }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
     targets.forEach(function (t) { observer.observe(t); });
   }
 
@@ -416,6 +382,8 @@
 
   setupNavToggle();
   setupScrollReveal();
+  setupWhyAccordion();
+  setupFaqAccordion();
 
   fetch("content.json", { cache: "no-store" })
     .then(function (res) { return res.json(); })

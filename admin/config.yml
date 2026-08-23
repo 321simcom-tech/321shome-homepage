@@ -21,24 +21,30 @@ collections:
           - label: "섹션 노출 설정"
             name: "sectionVisibility"
             widget: object
-            hint: "끄면(false) 해당 섹션이 홈페이지에서 통째로 보이지 않게 됩니다. 나중에 다시 켜면 원래 내용 그대로 복원됩니다."
+            hint: "끄면(false) 해당 섹션이 홈페이지에서 통째로 보이지 않게 됩니다."
             fields:
-              - { label: "문제 인식 (여행이 또 다른 노동이 되지 않도록)", name: "problem", widget: boolean, default: true }
-              - { label: "솔루션 (의도된 분리와 통합)", name: "solution", widget: boolean, default: true }
-              - { label: "비교 (일반 가족 여행과 무엇이 다른가)", name: "compare", widget: boolean, default: true }
-              - { label: "일정 (2박 3일 스케줄)", name: "schedule", widget: boolean, default: true }
-              - { label: "안심 케어", name: "care", widget: boolean, default: true }
-              - { label: "강진 이야기", name: "gangjin", widget: boolean, default: true }
-              - { label: "실증 성과", name: "results", widget: boolean, default: true }
-              - { label: "기업·기관 파트너", name: "partners", widget: boolean, default: true }
-              - { label: "회사 소개", name: "about", widget: boolean, default: true }
-              - { label: "참가 신청(하단 CTA)", name: "apply", widget: boolean, default: true }
+              - { label: "가족여행 고민(Problem)", name: "problem", widget: boolean, default: true }
+              - { label: "시간을 나누기로(Solution)", name: "solution", widget: boolean, default: true }
+              - { label: "2박 3일 프로그램 개요", name: "programOverview", widget: boolean, default: true }
+              - { label: "DAY 01 상세", name: "day1", widget: boolean, default: true }
+              - { label: "DAY 02 상세", name: "day2", widget: boolean, default: true }
+              - { label: "아이 돌봄", name: "childCare", widget: boolean, default: true }
+              - { label: "형제자매 프로그램", name: "sibling", widget: boolean, default: true }
+              - { label: "부모 자유시간", name: "parentFree", widget: boolean, default: true }
+              - { label: "DAY 03 다시 함께", name: "day3", widget: boolean, default: true }
+              - { label: "WHY 321SIM", name: "why", widget: boolean, default: true }
+              - { label: "SAFETY 6단계", name: "safety", widget: boolean, default: true }
+              - { label: "여행 이야기", name: "travel", widget: boolean, default: true }
+              - { label: "후기", name: "story", widget: boolean, default: true }
+              - { label: "FAQ", name: "faq", widget: boolean, default: true }
+              - { label: "FINAL CTA", name: "finalCta", widget: boolean, default: true }
+
           - label: "사이트 정보"
             name: "site"
             widget: object
             fields:
               - { label: "사이트 이름", name: "name", widget: string }
-              - { label: "태그라인", name: "tagline", widget: string }
+              - { label: "회사명(태그라인)", name: "tagline", widget: string }
 
           - label: "상단 메뉴"
             name: "nav"
@@ -50,236 +56,280 @@ collections:
                 fields:
                   - { label: "메뉴 이름", name: "label", widget: string }
                   - { label: "이동 링크(#로 시작)", name: "href", widget: string }
-              - { label: "기업·기관 문의 링크 텍스트", name: "partnersLink", widget: string }
-              - { label: "참가 신청 버튼 텍스트", name: "cta", widget: string }
+              - { label: "참여 상담 버튼 텍스트", name: "cta", widget: string }
 
           - label: "히어로(맨 위 화면)"
             name: "hero"
             widget: object
             fields:
-              - { label: "상단 배지 텍스트", name: "badge", widget: string }
-              - { label: "제목 앞부분", name: "titlePlain", widget: string }
-              - { label: "제목 강조 부분(색상 강조됨)", name: "titleHighlight", widget: string }
-              - { label: "제목 둘째 줄", name: "titleLine2", widget: string }
-              - { label: "부제 문단", name: "subcopy", widget: text, hint: "Enter 키를 누르면 그 위치에서 줄바꿈됩니다" }
-              - label: "강조 칩 목록"
-                name: "chips"
+              - { label: "제목 1줄", name: "titleLine1", widget: string }
+              - { label: "제목 2줄 앞부분", name: "titlePlain", widget: string }
+              - { label: "제목 2줄 강조부분", name: "titleHighlight", widget: string }
+              - { label: "부제 문단", name: "sub", widget: text, hint: "Enter 키를 누르면 그 위치에서 줄바꿈됩니다" }
+              - label: "4개 핵심가치"
+                name: "values"
                 widget: list
-                field: { label: "칩 텍스트", name: "chip", widget: string }
+                fields:
+                  - { label: "아이콘", name: "icon", widget: select, options: ["parent", "child", "sibling", "family"] }
+                  - { label: "라벨", name: "label", widget: string }
+                  - { label: "설명", name: "sub", widget: string }
               - { label: "기본 버튼 텍스트", name: "ctaPrimary", widget: string }
               - { label: "기본 버튼 링크", name: "ctaPrimaryHref", widget: string }
               - { label: "보조 버튼 텍스트", name: "ctaSecondary", widget: string }
               - { label: "보조 버튼 링크", name: "ctaSecondaryHref", widget: string }
-              - { label: "대표 사진", name: "photoImage", widget: image }
-              - { label: "사진 대체 텍스트(설명)", name: "photoAlt", widget: string }
-              - { label: "사진 옆 캡션 카드 문구", name: "photoCaption", widget: string }
+              - { label: "배경 사진", name: "photoImage", widget: image }
+              - { label: "사진 대체 텍스트", name: "photoAlt", widget: string }
 
-          - label: "문제 인식 섹션"
+          - label: "가족여행 고민(Problem)"
             name: "problem"
             widget: object
             fields:
               - { label: "제목", name: "heading", widget: string }
-              - label: "카드 목록"
+              - label: "카드 3개"
                 name: "cards"
                 widget: list
                 fields:
-                  - { label: "카드 제목", name: "title", widget: string }
-                  - { label: "카드 본문", name: "body", widget: text, hint: "Enter 키를 누르면 그 위치에서 줄바꿈됩니다" }
+                  - { label: "사진", name: "image", widget: image }
+                  - { label: "본문", name: "body", widget: text, hint: "Enter 키를 누르면 그 위치에서 줄바꿈됩니다" }
+              - { label: "하단 마무리 카피", name: "closing", widget: text, hint: "Enter 키를 누르면 그 위치에서 줄바꿈됩니다" }
 
-          - label: "솔루션 섹션"
+          - label: "시간을 나누기로(Solution)"
             name: "solution"
             widget: object
             fields:
-              - { label: "제목", name: "heading", widget: string }
-              - { label: "부제", name: "sub", widget: text, hint: "Enter 키를 누르면 그 위치에서 줄바꿈됩니다" }
-              - label: "대상별 카드(아동/형제자매/부모 순서 고정)"
+              - { label: "제목", name: "heading", widget: text, hint: "Enter 키를 누르면 그 위치에서 줄바꿈됩니다" }
+              - label: "대상별 카드(부모/아이/형제자매)"
                 name: "roles"
                 widget: list
                 fields:
                   - { label: "작은 라벨", name: "tag", widget: string }
-                  - { label: "카드 제목", name: "title", widget: string }
-                  - { label: "카드 본문", name: "body", widget: text, hint: "Enter 키를 누르면 그 위치에서 줄바꿈됩니다" }
-              - label: "다이어그램 라벨(3개, 아동/형제자매/부모 순서 고정)"
-                name: "diagramLabels"
-                widget: list
-                field: { label: "라벨", name: "label", widget: string }
-              - { label: "다이어그램 가운데 배지 텍스트", name: "diagramBadge", widget: string }
-              - { label: "타임라인 요약 문구", name: "timelineNote", widget: text, hint: "Enter 키를 누르면 그 위치에서 줄바꿈됩니다" }
-              - label: "타임라인 항목"
-                name: "timelineItems"
-                widget: list
+                  - { label: "제목", name: "title", widget: string }
+                  - { label: "본문", name: "body", widget: text, hint: "Enter 키를 누르면 그 위치에서 줄바꿈됩니다" }
+              - label: "3일차 재회 카드"
+                name: "reunion"
+                widget: object
                 fields:
-                  - { label: "시간대", name: "time", widget: string }
-                  - { label: "설명", name: "text", widget: string }
+                  - { label: "작은 라벨", name: "tag", widget: string }
+                  - { label: "제목", name: "title", widget: string }
+                  - { label: "본문", name: "body", widget: text, hint: "Enter 키를 누르면 그 위치에서 줄바꿈됩니다" }
 
-          - label: "비교 섹션(일반 여행 vs 삼이일심)"
-            name: "compare"
-            widget: object
-            fields:
-              - { label: "제목", name: "heading", widget: string }
-              - label: "비교 행"
-                name: "rows"
-                widget: list
-                fields:
-                  - { label: "구분 라벨", name: "label", widget: string }
-                  - { label: "일반 여행/기존 캠프", name: "a", widget: text, hint: "Enter 키를 누르면 그 위치에서 줄바꿈됩니다" }
-                  - { label: "삼이일심", name: "b", widget: text, hint: "Enter 키를 누르면 그 위치에서 줄바꿈됩니다" }
-              - { label: "마무리 문구", name: "closing", widget: string }
-
-          - label: "일정 섹션(2박 3일)"
-            name: "schedule"
-            widget: object
-            fields:
-              - { label: "제목", name: "heading", widget: string }
-              - label: "일자별 일정"
-                name: "days"
-                widget: list
-                fields:
-                  - { label: "일차 라벨(예: 1일차)", name: "n", widget: string }
-                  - { label: "일차 제목", name: "title", widget: string }
-                  - { label: "시작 표시(예: 10시)", name: "start", widget: string }
-                  - { label: "종료 표시(예: 20시)", name: "end", widget: string }
-                  - { label: "가운데 표시 텍스트", name: "mid", widget: string }
-                  - { label: "막대 시작 시각(숫자, 10~20)", name: "barFrom", widget: number }
-                  - { label: "막대 종료 시각(숫자, 10~20)", name: "barTo", widget: number }
-                  - label: "세부 항목"
-                    name: "items"
-                    widget: list
-                    field: { label: "항목", name: "item", widget: string }
-
-          - label: "안심 케어 섹션"
-            name: "care"
-            widget: object
-            fields:
-              - { label: "제목", name: "heading", widget: string }
-              - label: "인력 카드"
-                name: "roles"
-                widget: list
-                fields:
-                  - { label: "인원 수", name: "count", widget: string }
-                  - { label: "단위(예: 명)", name: "unit", widget: string }
-                  - { label: "직군명", name: "title", widget: string }
-                  - { label: "설명", name: "body", widget: text, hint: "Enter 키를 누르면 그 위치에서 줄바꿈됩니다" }
-                  - { label: "배지 텍스트(없으면 비워두기)", name: "badge", widget: string, required: false }
-              - { label: "운영 담당자 카드 제목", name: "operatorTitle", widget: string }
-              - { label: "운영 담당자 카드 설명", name: "operatorBody", widget: string }
-              - { label: "협력 전문가 라벨", name: "expertGroupLabel", widget: string }
-              - label: "협력 전문가 그룹 목록"
-                name: "expertGroups"
-                widget: list
-                field: { label: "기관명", name: "group", widget: string }
-
-          - label: "강진 이야기 섹션"
-            name: "gangjin"
-            widget: object
-            fields:
-              - { label: "작은 태그(예: WHERE)", name: "tag", widget: string }
-              - { label: "제목", name: "heading", widget: string }
-              - label: "장소 타일"
-                name: "tiles"
-                widget: list
-                fields:
-                  - { label: "장소 이름", name: "name", widget: string }
-                  - { label: "사진", name: "image", widget: image }
-              - { label: "하단 안내 문구", name: "note", widget: text, hint: "Enter 키를 누르면 그 위치에서 줄바꿈됩니다" }
-
-          - label: "실증 성과 섹션"
-            name: "results"
+          - label: "2박 3일 프로그램 개요"
+            name: "programOverview"
             widget: object
             fields:
               - { label: "제목", name: "heading", widget: string }
               - { label: "부제", name: "sub", widget: string }
-              - { label: "대표 사진(큰 사진)", name: "mainImage", widget: image }
-              - { label: "대표 사진 캡션", name: "mainCaption", widget: string }
-              - label: "작은 사진 4장"
-                name: "gridImages"
+              - label: "일자별 카드"
+                name: "days"
                 widget: list
                 fields:
-                  - { label: "캡션", name: "caption", widget: string }
-                  - { label: "사진", name: "image", widget: image }
-              - label: "참가자 후기"
-                name: "testimonial"
-                widget: object
+                  - { label: "일차 라벨(예: DAY 01)", name: "n", widget: string }
+                  - { label: "시간대", name: "time", widget: string, required: false }
+                  - { label: "제목", name: "title", widget: string }
+                  - label: "흐름 목록"
+                    name: "flow"
+                    widget: list
+                    field: { label: "항목", name: "item", widget: string }
+              - { label: "하단 마무리 카피", name: "closing", widget: text, hint: "Enter 키를 누르면 그 위치에서 줄바꿈됩니다" }
+
+          - label: "DAY 01 상세"
+            name: "day1"
+            widget: object
+            fields:
+              - { label: "제목", name: "heading", widget: string }
+              - label: "타임라인 스텝"
+                name: "steps"
+                widget: list
                 fields:
-                  - { label: "인용문", name: "quote", widget: text, hint: "Enter 키를 누르면 그 위치에서 줄바꿈됩니다" }
+                  - { label: "시간", name: "time", widget: string }
+                  - { label: "제목", name: "title", widget: string }
+                  - { label: "설명", name: "body", widget: string }
+              - label: "부모/아이/형제자매 분리"
+                name: "split"
+                widget: list
+                fields:
+                  - { label: "대상", name: "who", widget: string }
+                  - { label: "내용", name: "what", widget: string }
+              - { label: "하단 마무리 카피", name: "closing", widget: text, hint: "Enter 키를 누르면 그 위치에서 줄바꿈됩니다" }
+
+          - label: "DAY 02 상세"
+            name: "day2"
+            widget: object
+            fields:
+              - { label: "제목", name: "heading", widget: string }
+              - { label: "시간대", name: "time", widget: string }
+              - label: "부모/아이/형제자매 분리"
+                name: "split"
+                widget: list
+                fields:
+                  - { label: "대상", name: "who", widget: string }
+                  - { label: "내용", name: "what", widget: string }
+              - { label: "재회 문구", name: "reunionNote", widget: text, hint: "Enter 키를 누르면 그 위치에서 줄바꿈됩니다" }
+              - { label: "부모 자유시간 소제목", name: "parentTimeHeading", widget: text, hint: "Enter 키를 누르면 그 위치에서 줄바꿈됩니다" }
+              - label: "부모 자유시간 항목"
+                name: "parentTimeItems"
+                widget: list
+                field: { label: "항목", name: "item", widget: string }
+
+          - label: "아이 돌봄(Child Care)"
+            name: "childCare"
+            widget: object
+            fields:
+              - { label: "제목", name: "heading", widget: text, hint: "Enter 키를 누르면 그 위치에서 줄바꿈됩니다" }
+              - { label: "부제", name: "sub", widget: text, hint: "Enter 키를 누르면 그 위치에서 줄바꿈됩니다" }
+              - label: "프로그램 목록"
+                name: "programs"
+                widget: list
+                field: { label: "항목", name: "item", widget: string }
+              - { label: "버튼 텍스트", name: "cta", widget: string }
+              - { label: "대표 사진", name: "image", widget: image }
+
+          - label: "형제자매 프로그램"
+            name: "sibling"
+            widget: object
+            fields:
+              - { label: "제목", name: "heading", widget: text, hint: "Enter 키를 누르면 그 위치에서 줄바꿈됩니다" }
+              - { label: "부제", name: "sub", widget: text, hint: "Enter 키를 누르면 그 위치에서 줄바꿈됩니다" }
+              - label: "프로그램 목록"
+                name: "programs"
+                widget: list
+                field: { label: "항목", name: "item", widget: string }
+              - { label: "버튼 텍스트", name: "cta", widget: string }
+              - { label: "대표 사진", name: "image", widget: image }
+
+          - label: "부모 자유시간"
+            name: "parentFree"
+            widget: object
+            fields:
+              - { label: "제목", name: "heading", widget: text, hint: "Enter 키를 누르면 그 위치에서 줄바꿈됩니다" }
+              - { label: "부제", name: "sub", widget: text, hint: "Enter 키를 누르면 그 위치에서 줄바꿈됩니다" }
+              - label: "추천 활동"
+                name: "activities"
+                widget: list
+                field: { label: "항목", name: "item", widget: string }
+              - { label: "한 줄 카피", name: "quote", widget: string }
+              - { label: "버튼 텍스트", name: "cta", widget: string }
+              - { label: "대표 사진", name: "image", widget: image }
+
+          - label: "DAY 03 다시, 함께"
+            name: "day3"
+            widget: object
+            fields:
+              - { label: "작은 태그", name: "tag", widget: string }
+              - { label: "제목", name: "heading", widget: string }
+              - { label: "본문", name: "body", widget: text, hint: "Enter 키를 누르면 그 위치에서 줄바꿈됩니다" }
+              - label: "흐름 목록"
+                name: "flow"
+                widget: list
+                field: { label: "항목", name: "item", widget: string }
+              - { label: "마무리 카피", name: "closing", widget: string }
+              - { label: "배경 사진", name: "image", widget: image }
+
+          - label: "WHY 321SIM"
+            name: "why"
+            widget: object
+            fields:
+              - { label: "제목", name: "heading", widget: string }
+              - label: "5개 이유"
+                name: "items"
+                widget: list
+                fields:
+                  - { label: "번호(01~05)", name: "n", widget: string }
+                  - { label: "제목", name: "title", widget: string }
+                  - { label: "설명", name: "body", widget: text, hint: "Enter 키를 누르면 그 위치에서 줄바꿈됩니다" }
+
+          - label: "SAFETY(안전 6단계)"
+            name: "safety"
+            widget: object
+            fields:
+              - { label: "제목", name: "heading", widget: string }
+              - label: "6단계 프로세스"
+                name: "steps"
+                widget: list
+                fields:
+                  - { label: "번호(01~06)", name: "n", widget: string }
+                  - { label: "제목", name: "title", widget: string }
+                  - { label: "설명", name: "body", widget: string }
+              - { label: "실적 근거 문구", name: "proofNote", widget: text }
+              - { label: "버튼 텍스트", name: "cta", widget: string }
+
+          - label: "여행 이야기(Travel)"
+            name: "travel"
+            widget: object
+            fields:
+              - { label: "제목", name: "heading", widget: text, hint: "Enter 키를 누르면 그 위치에서 줄바꿈됩니다" }
+              - label: "지역 카드"
+                name: "regions"
+                widget: list
+                fields:
+                  - { label: "지역명", name: "name", widget: string }
+                  - { label: "설명", name: "body", widget: string }
+              - { label: "부모 추천 라벨", name: "parentRecommendLabel", widget: string }
+              - label: "부모 추천 항목"
+                name: "parentRecommendItems"
+                widget: list
+                field: { label: "항목", name: "item", widget: string }
+              - { label: "버튼 텍스트", name: "cta", widget: string }
+
+          - label: "후기(Story)"
+            name: "story"
+            widget: object
+            fields:
+              - { label: "제목", name: "heading", widget: string }
+              - { label: "실적 한 줄", name: "proofLine", widget: string }
+              - label: "후기 카드"
+                name: "testimonials"
+                widget: list
+                fields:
+                  - { label: "인용문", name: "quote", widget: text }
                   - { label: "작성자 표기", name: "author", widget: string }
-              - label: "통계 카드"
-                name: "stats"
-                widget: list
-                fields:
-                  - { label: "숫자/값", name: "value", widget: string }
-                  - { label: "설명", name: "label", widget: string }
-              - { label: "2026 목표 라벨", name: "goalsLabel", widget: string }
-              - label: "2026 목표 목록"
-                name: "goals"
-                widget: list
-                field: { label: "목표", name: "goal", widget: string }
-              - { label: "언론 보도 소제목", name: "newsHeading", widget: string }
-              - label: "언론 보도"
-                name: "news"
-                widget: object
-                fields:
-                  - { label: "기사 제목", name: "title", widget: string }
-                  - { label: "매체·날짜", name: "source", widget: string }
               - { label: "협력 기관 라벨", name: "partnersLabel", widget: string }
               - label: "협력 기관 목록"
                 name: "partners"
                 widget: list
-                field: { label: "기관명", name: "partner", widget: string }
-
-          - label: "기업·기관 파트너 섹션"
-            name: "partners"
-            widget: object
-            fields:
-              - { label: "제목", name: "heading", widget: string }
-              - label: "파트너십 카드"
-                name: "cards"
-                widget: list
-                fields:
-                  - { label: "카드 제목", name: "title", widget: string }
-                  - { label: "카드 본문", name: "body", widget: text, hint: "Enter 키를 누르면 그 위치에서 줄바꿈됩니다" }
+                field: { label: "기관명", name: "item", widget: string }
+              - { label: "B2B 안내 문구", name: "b2bNote", widget: string }
               - { label: "버튼 텍스트", name: "cta", widget: string }
 
-          - label: "회사 소개 섹션"
-            name: "about"
+          - label: "FAQ"
+            name: "faq"
             widget: object
             fields:
               - { label: "제목", name: "heading", widget: string }
-              - { label: "소개 문단", name: "lead", widget: text, hint: "Enter 키를 누르면 그 위치에서 줄바꿈됩니다" }
-              - { label: "소개 문단 중 강조할 단어(문단 안에 있는 문구와 정확히 일치해야 함)", name: "leadHighlight", widget: string }
-              - label: "회사 정보 표"
-                name: "info"
+              - label: "질문/답변 목록"
+                name: "items"
                 widget: list
+                summary: "{{fields.q}}"
                 fields:
-                  - { label: "항목명", name: "term", widget: string }
-                  - { label: "값", name: "value", widget: string }
-              - label: "ESG 카드"
-                name: "esg"
-                widget: list
-                fields:
-                  - { label: "태그", name: "tag", widget: string }
-                  - { label: "설명", name: "body", widget: text, hint: "Enter 키를 누르면 그 위치에서 줄바꿈됩니다" }
+                  - { label: "질문", name: "q", widget: string }
+                  - { label: "답변", name: "a", widget: text }
 
-          - label: "참가 신청 섹션(하단)"
-            name: "apply"
+          - label: "FINAL CTA(하단 마지막)"
+            name: "finalCta"
             widget: object
             fields:
-              - { label: "제목", name: "heading", widget: string }
-              - { label: "부제", name: "sub", widget: text, hint: "Enter 키를 누르면 그 위치에서 줄바꿈됩니다" }
-              - { label: "이메일 문의 버튼 텍스트", name: "ctaEmail", widget: string }
-              - { label: "기업 문의 버튼 텍스트", name: "ctaPartner", widget: string }
-              - { label: "전화 상담 버튼 텍스트", name: "ctaPhone", widget: string }
-              - { label: "문의 이메일 주소", name: "email", widget: string }
-              - { label: "전화번호(숫자만)", name: "phone", widget: string }
+              - { label: "작은 라벨", name: "eyebrow", widget: string }
+              - { label: "제목", name: "heading", widget: text, hint: "Enter 키를 누르면 그 위치에서 줄바꿈됩니다" }
+              - label: "강조 줄 목록"
+                name: "lines"
+                widget: list
+                field: { label: "줄", name: "line", widget: string }
+              - { label: "버튼 텍스트", name: "cta", widget: string }
+              - { label: "버튼 링크", name: "ctaHref", widget: string }
+              - { label: "배경 사진", name: "image", widget: image }
+
+          - label: "모바일 하단 고정 CTA"
+            name: "mobileCta"
+            widget: object
+            fields:
+              - { label: "문구", name: "text", widget: string }
+              - { label: "버튼 텍스트", name: "button", widget: string }
 
           - label: "푸터(하단 정보)"
             name: "footer"
             widget: object
             fields:
               - { label: "회사명", name: "companyName", widget: string }
-              - { label: "대표자·사업자번호 줄", name: "infoLine1", widget: string }
-              - { label: "주소 줄", name: "infoLine2", widget: string }
-              - { label: "연락처 줄", name: "infoLine3", widget: string }
               - label: "링크 목록"
                 name: "links"
                 widget: list
@@ -287,10 +337,8 @@ collections:
                   - { label: "표시 여부", name: "visible", widget: boolean, default: true }
                   - { label: "링크 텍스트", name: "label", widget: string }
                   - { label: "링크 주소", name: "href", widget: string }
-              - { label: "지원사업 영역 표시 여부", name: "showPrograms", widget: boolean, default: true }
-              - { label: "지원사업 라벨", name: "programsLabel", widget: string }
-              - label: "지원사업 목록"
-                name: "programs"
-                widget: list
-                field: { label: "항목", name: "program", widget: string }
+              - { label: "연락처 라벨", name: "contactLabel", widget: string }
+              - { label: "전화번호", name: "phone", widget: string }
+              - { label: "이메일", name: "email", widget: string }
+              - { label: "주소", name: "address", widget: string }
               - { label: "저작권 문구", name: "copyright", widget: string }

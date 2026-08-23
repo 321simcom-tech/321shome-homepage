@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+<defs>
+<pattern id="p" width="28" height="28" patternTransform="rotate(135)" patternUnits="userSpaceOnUse">
+<rect width="14" height="28" fill="#EDE2D0"/><rect x="14" width="14" height="28" fill="#E5D9C4"/>
+</pattern>
+</defs>
+<rect width="1600" height="900" fill="url(#p)"/>
+<g fill="#6B6480" font-family="ui-monospace,Menlo,monospace" font-size="26" text-anchor="middle">
+<text x="800" y="440">[사진 준비 중]</text>
+<text x="800" y="478">이미지를 교체해 주세요</text>
+</g>
+</svg>
