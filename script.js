@@ -179,15 +179,12 @@
     // child care / sibling / parent free (feature sections)
     applyResponsiveImage(document.getElementById("childcare-image"), data.childCare.image, [480, 800, 1100], "(max-width:860px) 100vw, 540px", 800);
     fillPills("childcare-programs", data.childCare.programs);
-    document.getElementById("childcare-cta").href = "#care";
 
     applyResponsiveImage(document.getElementById("sibling-image"), data.sibling.image, [480, 800, 1100], "(max-width:860px) 100vw, 540px", 800);
     fillPills("sibling-programs", data.sibling.programs);
-    document.getElementById("sibling-cta").href = "#care";
 
     applyResponsiveImage(document.getElementById("parentfree-image"), data.parentFree.image, [480, 800, 1100], "(max-width:860px) 100vw, 540px", 800);
     fillPills("parentfree-activities", data.parentFree.activities);
-    document.getElementById("parentfree-cta").href = "#travel";
 
     // day3 fullbleed
     applyResponsiveImage(document.getElementById("day3-image"), data.day3.image, [700, 1200, 1800], "100vw", 1200);
@@ -236,7 +233,6 @@
       storyTrack.appendChild(card);
     });
     fillPills("story-partners", data.story.partners);
-    document.getElementById("story-cta").href = "#faq";
     setupStoryCarousel(data.story.testimonials.length);
 
     // faq (그룹별 아코디언)

@@ -182,7 +182,6 @@ collections:
                 name: "programs"
                 widget: list
                 field: { label: "항목", name: "item", widget: string }
-              - { label: "버튼 텍스트", name: "cta", widget: string }
               - { label: "대표 사진", name: "image", widget: image }
 
           - label: "형제자매 프로그램"
@@ -195,7 +194,6 @@ collections:
                 name: "programs"
                 widget: list
                 field: { label: "항목", name: "item", widget: string }
-              - { label: "버튼 텍스트", name: "cta", widget: string }
               - { label: "대표 사진", name: "image", widget: image }
 
           - label: "부모 자유시간"
@@ -209,7 +207,6 @@ collections:
                 widget: list
                 field: { label: "항목", name: "item", widget: string }
               - { label: "한 줄 카피", name: "quote", widget: string }
-              - { label: "버튼 텍스트", name: "cta", widget: string }
               - { label: "대표 사진", name: "image", widget: image }
 
           - label: "DAY 03 다시, 함께"
@@ -252,7 +249,6 @@ collections:
                   - { label: "제목", name: "title", widget: string }
                   - { label: "설명", name: "body", widget: string }
               - { label: "실적 근거 문구", name: "proofNote", widget: text }
-              - { label: "버튼 텍스트", name: "cta", widget: string }
 
           - label: "여행 이야기(Travel)"
             name: "travel"
@@ -290,7 +286,6 @@ collections:
                 widget: list
                 field: { label: "기관명", name: "item", widget: string }
               - { label: "B2B 안내 문구", name: "b2bNote", widget: string }
-              - { label: "버튼 텍스트", name: "cta", widget: string }
 
           - label: "FAQ"
             name: "faq"

@@ -3,15 +3,15 @@
     "problem": true,
     "solution": true,
     "programOverview": true,
-    "day1": true,
-    "day2": true,
+    "day1": false,
+    "day2": false,
     "childCare": true,
     "sibling": true,
     "parentFree": true,
     "day3": true,
     "why": true,
     "safety": true,
-    "travel": true,
+    "travel": false,
     "story": true,
     "faq": true,
     "finalCta": true
@@ -22,7 +22,6 @@
       { "label": "왜 삼이일심인가?", "href": "#why" },
       { "label": "2박 3일 프로그램", "href": "#program" },
       { "label": "돌봄 & 프로그램", "href": "#care" },
-      { "label": "여행 이야기", "href": "#travel" },
       { "label": "후기", "href": "#story" },
       { "label": "FAQ", "href": "#faq" }
     ],
@@ -103,14 +102,12 @@
     "heading": "아이에게도\n여행입니다.",
     "sub": "아이를 단순히 맡겨두는 시간이 아닙니다.\n아이에게도 새로운 환경에서 즐거운 경험이 시작됩니다.",
     "programs": ["놀이 & 감각 활동", "예술 & 창의 활동", "자연 & 문화 체험", "지역 체험", "개별 특성 맞춤 지원", "전문 인력과 함께하는 활동"],
-    "cta": "돌봄 & 프로그램 자세히 보기",
     "image": "images/placeholder-wide.svg"
   },
   "sibling": {
     "heading": "이번 여행에서는\n형제자매도 주인공입니다.",
     "sub": "누군가의 형제자매가 아니라\n나 자신으로 경험하는 시간",
     "programs": ["체험 & 만들기", "문화 & 지역 체험", "야외활동", "놀이 & 어드벤처", "또래 교류 활동", "개별 관심 기반 활동"],
-    "cta": "형제자매 프로그램 보기",
     "image": "images/placeholder-wide.svg"
   },
   "parentFree": {
@@ -118,7 +115,6 @@
     "sub": "원하는 곳에서,\n원하는 방식으로\n잠시 온전히 쉬어보세요.",
     "activities": ["강진 맛집", "카페", "산책", "관광", "부부 시간", "아무것도 하지 않기"],
     "quote": "쉬는 것도 여행입니다.",
-    "cta": "부모 여행 추천 보기",
     "image": "images/placeholder-wide.svg"
   },
   "day3": {
@@ -149,8 +145,7 @@
       { "n": "05", "title": "부모와 정보 공유", "body": "활동 및 주요 사항 공유" },
       { "n": "06", "title": "가족 재회", "body": "20:00 가족 모두 다시 만남" }
     ],
-    "proofNote": "2025년 11월 1차 실증 운영에서 6가족 15명이 함께했고, 작업치료사·보조교사(1:1)·활동지원사가 20시까지 밀착 지원했습니다.",
-    "cta": "돌봄과 안전 자세히 보기"
+    "proofNote": "2025년 11월 1차 실증 운영에서 6가족 15명이 함께했고, 작업치료사·보조교사(1:1)·활동지원사가 20시까지 밀착 지원했습니다."
   },
   "travel": {
     "heading": "강진에서 만나는\n우리 가족의 여행",
@@ -172,8 +167,7 @@
     ],
     "partnersLabel": "함께하는 협력 기관",
     "partners": ["한국관광공사", "강진군청", "농업법인 수경당", "대학작업치료사협회 광주전남지회"],
-    "b2bNote": "기업 임직원 복지·지자체 위탁 운영 문의도 받고 있습니다.",
-    "cta": "더 많은 이야기 보기"
+    "b2bNote": "기업 임직원 복지·지자체 위탁 운영 문의도 받고 있습니다."
   },
   "faq": {
     "heading": "자주 묻는 질문",

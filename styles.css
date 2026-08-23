@@ -110,7 +110,7 @@ h1,h2,h3,h4{font-family:var(--font-h)}
 .hero-value .icon-badge svg{width:24px;height:24px}
 .hero-value .value-label{font-size:13px;font-weight:700;color:var(--ink)}
 .hero-value .value-sub{font-size:12px;color:var(--muted)}
-.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.hero-ctas{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:32px}
 .hero-photo{position:relative;margin:0}
 .hero-photo img{border-radius:var(--r-media);overflow:hidden;aspect-ratio:4/4.6;object-fit:cover;width:100%}
 
@@ -134,8 +134,12 @@ h1,h2,h3,h4{font-family:var(--font-h)}
 
 /* day cards (program overview) */
 .day-cards{grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:36px}
-.day-card{background:var(--paper-2)}
-.day-card .n{display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;background:var(--navy);color:#fff;font-size:13px;font-weight:700;letter-spacing:.04em}
+.day-card{background:var(--paper-2);border-top:4px solid var(--accent)}
+.day-card:nth-child(2){border-top-color:var(--navy)}
+.day-card:nth-child(3){border-top-color:#3F8F6B}
+.day-card .n{display:inline-flex;align-items:center;height:32px;padding:0 14px;border-radius:999px;background:var(--accent);color:#fff;font-size:13px;font-weight:700;letter-spacing:.04em}
+.day-card:nth-child(2) .n{background:var(--navy)}
+.day-card:nth-child(3) .n{background:#3F8F6B}
 .day-card .time{margin-left:8px;font:13px ui-monospace,Menlo,monospace;color:var(--accent-deep);font-weight:600}
 .day-card h3{margin:14px 0 0;font-size:calc(var(--fs-body) + 4px);font-weight:700;color:var(--ink)}
 .day-card ul{margin:16px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px}
@@ -155,9 +159,6 @@ h1,h2,h3,h4{font-family:var(--font-h)}
 .split-item .what{margin-top:8px;font-size:calc(var(--fs-body) + 1px);font-weight:600;color:var(--ink)}
 .parent-time-block{margin-top:40px}
 .parent-time-block h3{margin:0;font-size:calc(var(--h2) * .7);font-weight:700;color:var(--ink);line-height:1.5}
-
-/* pills variant for programs */
-.btn.btn-outline{margin-top:28px}
 
 /* day3 / finalCta fullbleed */
 .fullbleed{position:relative;padding:0;min-height:clamp(420px,60vw,620px);display:flex;align-items:center;overflow:hidden}
@@ -193,7 +194,6 @@ h1,h2,h3,h4{font-family:var(--font-h)}
 .safety-step h4{margin:8px 0 0;font-size:calc(var(--fs-body) + 1px);font-weight:700;color:var(--inv-ink)}
 .safety-step p{margin:6px 0 0;font-size:14.5px;line-height:1.65;color:var(--inv-body)}
 .proof-note{margin:28px 0 0;max-width:44em;font-size:15px;line-height:1.75;color:var(--inv-body);padding:16px 20px;background:var(--inv-surface);border-left:3px solid var(--inv-accent);border-radius:0 12px 12px 0}
-.safety .btn{margin-top:28px}
 
 /* travel */
 .region-cards{margin-top:36px}
@@ -219,7 +219,7 @@ h1,h2,h3,h4{font-family:var(--font-h)}
 }
 .story-partners{margin-top:36px}
 .b2b-note{margin:12px 0 0;font-size:14.5px;color:var(--muted)}
-.story .btn{margin-top:24px}
+#travel .btn{margin-top:24px}
 
 /* faq */
 .faq-list{display:flex;flex-direction:column;gap:12px;margin-top:32px;max-width:820px}
