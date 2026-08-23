@@ -19,3 +19,10 @@
   [headers.values]
     X-Frame-Options = "SAMEORIGIN"
     X-Content-Type-Options = "nosniff"
+
+# content.json은 관리자 화면에서 수시로 바뀌는 파일이라, CDN/브라우저가
+# 오래 캐싱해 게시 후에도 예전 내용이 보이는 문제를 막기 위해 캐시를 끈다.
+[[headers]]
+  for = "/content.json"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
