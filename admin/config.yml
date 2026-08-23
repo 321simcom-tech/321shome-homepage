@@ -1,6 +1,9 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: 321simcom-tech/321shome-homepage
   branch: main
+  base_url: https://mellifluous-semolina-e0899a.netlify.app
+  auth_endpoint: api/auth
 
 media_folder: "images"
 public_folder: "images"

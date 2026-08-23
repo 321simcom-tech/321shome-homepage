@@ -54,20 +54,38 @@ netlify.toml        배포 설정
 
 이 사이트는 **Decap CMS**라는 무료 오픈소스 CMS가 `/admin` 경로에 이미 붙어 있습니다. 코드를 몰라도 로그인 후 화면에서 텍스트를 고치고 사진을 올리면, 자동으로 GitHub에 저장되고 Netlify가 사이트를 다시 배포합니다.
 
+로그인은 **GitHub 계정으로 직접 로그인하는 방식**입니다 (Netlify Identity/Git Gateway는 Netlify가 단종시켜서 사용하지 않음). `netlify/functions/auth.js`, `netlify/functions/callback.js`가 로그인 중계 역할을 하는 Netlify Function입니다.
+
 ### 활성화 방법 (최초 1회만)
-1. Netlify 사이트 대시보드 → **Site configuration → Identity** → "Enable Identity"
-2. Identity 설정에서 "Registration"을 **Invite only**로 설정 (누구나 가입하지 못하도록)
-3. 같은 페이지에서 **Services → Git Gateway** → "Enable Git Gateway" 클릭
-4. Identity 탭 → "Invite users" → 편집을 담당할 사람의 이메일 입력 → 초대 메일 발송
-5. 초대받은 사람이 메일의 링크를 클릭하면 비밀번호를 설정하고 바로 `내사이트주소/admin` 관리자 화면으로 접속됩니다.
+
+**1) GitHub에 OAuth App 만들기**
+1. https://github.com/settings/developers 접속 → **"OAuth Apps"** 탭 → **"New OAuth App"**
+2. 입력값:
+   - Application name: `삼이일심 관리자` (아무 이름)
+   - Homepage URL: `https://내사이트주소.netlify.app`
+   - Authorization callback URL: `https://내사이트주소.netlify.app/api/callback`
+3. "Register application" 클릭 → **Client ID**가 발급됨
+4. "Generate a new client secret" 클릭 → **Client Secret** 발급 (이 값은 이후 딱 한 번만 보이니 안전한 곳에 잠시 복사해두기)
+
+**2) Netlify에 환경변수로 등록**
+1. Netlify 대시보드 → 사이트 선택 → **Project configuration → Environment variables**
+2. "Add a variable" → 아래 두 개를 각각 추가
+   - `GITHUB_OAUTH_CLIENT_ID` = 위에서 발급받은 Client ID
+   - `GITHUB_OAUTH_CLIENT_SECRET` = 위에서 발급받은 Client Secret
+3. 저장 후, **Deploys → Trigger deploy → Deploy site**로 한 번 재배포 (환경변수를 인식시키기 위함)
+
+> Client Secret은 절대 `content.json`이나 코드 파일, 채팅, 메모 등에 남기지 마세요. Netlify 환경변수에만 저장합니다.
+
+**3) `admin/config.yml`의 저장소 정보 확인**
+`repo:`와 `base_url:` 값이 실제 GitHub 저장소, 실제 Netlify 사이트 주소와 일치하는지 확인합니다. (이미 맞게 설정되어 있다면 그대로 두면 됨)
 
 ### 이후 사용법
-- `내사이트주소.netlify.app/admin` 접속 → 로그인
+- `내사이트주소.netlify.app/admin` 접속 → **"Login with GitHub"** 클릭 → GitHub 로그인/승인
 - "홈페이지 콘텐츠" → "전체 페이지 콘텐츠" 클릭
 - 섹션별(히어로, 일정, 후기, 회사 소개 등)로 텍스트를 수정하거나, 이미지 항목에서 새 사진을 업로드해 교체
 - 우측 상단 "Publish"(게시) 클릭 → 몇 초~1분 뒤 실제 사이트에 반영됨
 
-무료 플랜 기준으로 소수 관리자 계정으로 사용하기에 충분하며, 계정을 늘려야 하면 Netlify에서 유료 전환하면 됩니다.
+이 저장소에 **Write 권한이 있는 GitHub 계정**만 로그인/편집할 수 있습니다. 편집 담당자를 늘리려면 GitHub 저장소 Settings → Collaborators에서 초대하면 됩니다.
 
 ---
 
