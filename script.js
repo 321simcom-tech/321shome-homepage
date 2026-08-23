@@ -58,13 +58,45 @@
     });
   }
 
+  // 섹션 배경 톤: a=밝은 종이+무늬, b=밝은 종이(무늬 없음), dark=어두운 강조.
+  // 섹션이 꺼지면 앞뒤로 남은 섹션끼리 같은 톤이 맞붙지 않도록 자동으로 재배정한다.
+  var SECTION_ORDER = ["problem", "solution", "compare", "schedule", "care", "gangjin", "results", "partners", "about"];
+  var SECTION_TONE = { problem: "b", solution: "a", compare: "dark", schedule: "b", care: "a", gangjin: "b", results: "a", partners: "dark", about: "b" };
+  var TONE_CLASSES = {
+    a: ["bg-paper", "textured"],
+    b: ["bg-paper2"],
+    dark: ["bg-inv"]
+  };
+  var ALL_TONE_CLASSES = ["bg-paper", "bg-paper2", "bg-inv", "textured"];
+
   function applySectionVisibility(data) {
     var visibility = data.sectionVisibility || {};
-    document.querySelectorAll("[data-section]").forEach(function (section) {
-      var key = section.getAttribute("data-section");
+    var prevTone = "a"; // 히어로 섹션 기준(밝은 톤)에서 시작
+
+    SECTION_ORDER.forEach(function (key) {
+      var section = document.querySelector('[data-section="' + key + '"]');
+      if (!section) return;
       var visible = visibility[key] !== false;
       section.style.display = visible ? "" : "none";
+      section.classList.remove("tone-divider");
+      ALL_TONE_CLASSES.forEach(function (c) { section.classList.remove(c); });
+      if (!visible) return;
+
+      var tone = SECTION_TONE[key];
+      if (tone !== "dark" && tone === prevTone) {
+        tone = tone === "a" ? "b" : "a"; // 밝은 톤끼리 연속되면 서로 바꿔서 리듬 유지
+      } else if (tone === "dark" && prevTone === "dark") {
+        section.classList.add("tone-divider"); // 어두운 섹션끼리 연속되면 구분선만 추가(색은 유지)
+      }
+      TONE_CLASSES[tone].forEach(function (c) { section.classList.add(c); });
+      prevTone = tone;
     });
+
+    // apply 섹션은 항상 고정 강조색(주황)이라 톤 로테이션에서 제외, 노출 여부만 반영
+    var applySection = document.querySelector('[data-section="apply"]');
+    if (applySection) {
+      applySection.style.display = (visibility.apply !== false) ? "" : "none";
+    }
   }
 
   function render(data) {
@@ -93,9 +125,12 @@
     var problemCards = document.getElementById("problem-cards");
     problemCards.innerHTML = "";
     problemCards.classList.add("grid-auto");
-    data.problem.cards.forEach(function (c) {
+    var problemAccents = ["accent-deep", "accent-sage", "accent-plum"];
+    data.problem.cards.forEach(function (c, i) {
       var card = el("article", "card");
-      card.innerHTML = "<h3>" + c.title + "</h3><p>" + c.body + "</p>";
+      card.innerHTML =
+        "<span class=\"card-accent-bar " + (problemAccents[i % problemAccents.length]) + "\"></span>" +
+        "<h3>" + c.title + "</h3><p>" + c.body + "</p>";
       problemCards.appendChild(card);
     });
 
@@ -280,16 +315,29 @@
     // footer
     var footerLinks = document.getElementById("footer-links");
     footerLinks.innerHTML = "";
-    data.footer.links.forEach(function (l) {
+    var visibleLinks = data.footer.links.filter(function (l) { return l.visible !== false; });
+    visibleLinks.forEach(function (l) {
       var a = el("a", null, l.label);
       a.href = l.href;
       footerLinks.appendChild(a);
     });
+    footerLinks.style.display = visibleLinks.length ? "" : "none";
+
+    var showPrograms = data.footer.showPrograms !== false;
+    var footerProgramsCol = document.getElementById("footer-programs");
+    footerProgramsCol.style.display = showPrograms ? "" : "none";
     var footerProgramsList = document.getElementById("footer-programs-list");
     footerProgramsList.innerHTML = "";
-    data.footer.programs.forEach(function (p) {
-      footerProgramsList.appendChild(el("span", "pill", p));
-    });
+    if (showPrograms) {
+      data.footer.programs.forEach(function (p) {
+        footerProgramsList.appendChild(el("span", "pill", p));
+      });
+    }
+
+    var footerGrid = document.querySelector(".footer-grid");
+    if (footerGrid) {
+      footerGrid.classList.toggle("centered", !visibleLinks.length && !showPrograms);
+    }
   }
 
   var prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;

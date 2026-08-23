@@ -349,17 +349,21 @@
     "links": [
       {
         "label": "개인정보처리방침",
-        "href": "#top"
+        "href": "#top",
+        "visible": false
       },
       {
         "label": "이용약관",
-        "href": "#top"
+        "href": "#top",
+        "visible": false
       },
       {
         "label": "기업·기관 문의",
-        "href": "#partners"
+        "href": "#partners",
+        "visible": false
       }
     ],
+    "showPrograms": false,
     "programsLabel": "지원사업",
     "programs": [
       "한국관광공사",

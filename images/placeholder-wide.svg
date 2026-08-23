@@ -5,7 +5,8 @@
 </pattern>
 </defs>
 <rect width="900" height="500" fill="url(#p)"/>
-<g fill="#6B6480" font-family="ui-monospace,Menlo,monospace" font-size="18">
-<text x="24" y="464">[사진 준비 중] 이미지를 교체해 주세요</text>
+<g fill="#6B6480" font-family="ui-monospace,Menlo,monospace" font-size="18" text-anchor="middle">
+<text x="450" y="240">[사진 준비 중]</text>
+<text x="450" y="266">이미지를 교체해 주세요</text>
 </g>
 </svg>

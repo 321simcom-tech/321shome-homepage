@@ -284,8 +284,10 @@ collections:
                 name: "links"
                 widget: list
                 fields:
+                  - { label: "표시 여부", name: "visible", widget: boolean, default: true }
                   - { label: "링크 텍스트", name: "label", widget: string }
                   - { label: "링크 주소", name: "href", widget: string }
+              - { label: "지원사업 영역 표시 여부", name: "showPrograms", widget: boolean, default: true }
               - { label: "지원사업 라벨", name: "programsLabel", widget: string }
               - label: "지원사업 목록"
                 name: "programs"
