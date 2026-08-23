@@ -14,7 +14,7 @@
   --inv-accent:#F37D21; --inv-hi-bg:rgba(243,125,33,.1);
 }
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);font-family:"Pretendard Variable",Pretendard,"Noto Sans KR",-apple-system,BlinkMacSystemFont,system-ui,"Malgun Gothic",sans-serif;color:var(--body-c);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{margin:0;background:var(--paper);font-family:"Pretendard Variable",Pretendard,"Noto Sans KR",-apple-system,BlinkMacSystemFont,system-ui,"Malgun Gothic",sans-serif;color:var(--body-c);-webkit-font-smoothing:antialiased;overflow-x:hidden;word-break:keep-all;overflow-wrap:break-word}
 *{box-sizing:border-box}
 img{max-width:100%;display:block}
 a{color:var(--accent-deep);text-decoration:none}
@@ -37,6 +37,24 @@ button{font-family:inherit}
 .main-nav a{font-size:15px;font-weight:500;color:var(--body-c)}
 .header-actions{display:flex;align-items:center;gap:16px;flex:none}
 .header-actions .link-accent{font-size:15px;font-weight:500;color:var(--accent-deep)}
+
+.nav-toggle{display:none;flex-direction:column;justify-content:center;align-items:stretch;gap:5px;width:38px;height:38px;padding:9px 8px;border:none;border-radius:8px;background:transparent;cursor:pointer;flex:none}
+.nav-toggle span{display:block;height:2px;background:var(--ink);border-radius:2px;transition:transform .2s ease-out,opacity .2s ease-out}
+.nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-panel{display:flex;align-items:center;gap:clamp(14px,3vw,36px);flex-wrap:wrap;flex:1 1 auto}
+
+@media (max-width:860px){
+  .nav-toggle{display:flex}
+  .nav-panel{display:none;flex-basis:100%;flex-direction:column;align-items:stretch;gap:0;order:3;border-top:1px solid var(--line);margin-top:12px;padding-top:12px}
+  .nav-panel.open{display:flex}
+  .main-nav{flex-direction:column;align-items:stretch;gap:2px;width:100%}
+  .main-nav a{padding:12px 4px;border-bottom:1px solid var(--line)}
+  .header-actions{flex-direction:column;align-items:stretch;gap:10px;width:100%;margin-top:14px}
+  .header-actions .link-accent{padding:6px 4px}
+  .header-actions .btn{width:100%;justify-content:center}
+}
 
 /* buttons */
 .btn{display:inline-flex;align-items:center;height:56px;padding:0 30px;border-radius:var(--r-btn);font-size:17px;font-weight:600;transition:transform .18s ease-out;border:none;cursor:pointer}

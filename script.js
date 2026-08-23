@@ -245,6 +245,24 @@
     });
   }
 
+  function setupNavToggle() {
+    var toggle = document.getElementById("nav-toggle");
+    var panel = document.getElementById("nav-panel");
+    if (!toggle || !panel) return;
+    toggle.addEventListener("click", function () {
+      var isOpen = panel.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+    panel.addEventListener("click", function (e) {
+      if (e.target.tagName === "A") {
+        panel.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+
+  setupNavToggle();
+
   fetch("content.json", { cache: "no-store" })
     .then(function (res) { return res.json(); })
     .then(render)
