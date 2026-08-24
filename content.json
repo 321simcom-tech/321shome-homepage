@@ -85,10 +85,6 @@
     ],
     "image": "images/water_yuri_m.png"
   },
-  "mobileCta": {
-    "text": "우리 가족도 함께할 수 있을까요?",
-    "button": "상담"
-  },
   "safety": {
     "heading": "아이를 안심하고 맡길 수 있도록",
     "steps": [

@@ -320,13 +320,6 @@ collections:
               - { label: "버튼 링크", name: "ctaHref", widget: string }
               - { label: "배경 사진", name: "image", widget: image }
 
-          - label: "모바일 하단 고정 CTA"
-            name: "mobileCta"
-            widget: object
-            fields:
-              - { label: "문구", name: "text", widget: string }
-              - { label: "버튼 텍스트", name: "button", widget: string }
-
           - label: "푸터(하단 정보)"
             name: "footer"
             widget: object
