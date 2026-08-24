@@ -261,16 +261,6 @@
     finalLines.innerHTML = "";
     data.finalCta.lines.forEach(function (l) { finalLines.appendChild(el("span", null, l)); });
 
-    // footer
-    var footerLinks = document.getElementById("footer-links");
-    footerLinks.innerHTML = "";
-    var visibleLinks = data.footer.links.filter(function (l) { return l.visible !== false; });
-    visibleLinks.forEach(function (l) {
-      var a = el("a", null, l.label);
-      a.href = l.href;
-      footerLinks.appendChild(a);
-    });
-    footerLinks.style.display = visibleLinks.length ? "" : "none";
   }
 
   // 섹션 배경 톤: a=밝은 종이, b=밝은 종이(대체 톤). safety는 항상 고정 네이비.

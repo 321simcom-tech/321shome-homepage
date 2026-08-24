@@ -449,37 +449,8 @@
   },
   "footer": {
     "companyName": "주식회사 삼이일심",
-    "ceoName": "대표 이채율",
-    "businessNumber": "사업자등록번호 686-88-03416",
+    "legalLine": "대표 이채율 · 사업자등록번호 686-88-03416",
     "address": "전라남도 강진군 강진읍 탐진로 51, 103동 2호",
-    "links": [
-      {
-        "label": "회사소개",
-        "href": "#why",
-        "visible": false
-      },
-      {
-        "label": "개인정보처리방침",
-        "href": "#top",
-        "visible": false
-      },
-      {
-        "label": "이용약관",
-        "href": "#top",
-        "visible": false
-      },
-      {
-        "label": "FAQ",
-        "href": "#faq",
-        "visible": false
-      },
-      {
-        "label": "문의하기",
-        "href": "#apply",
-        "visible": false
-      }
-    ],
-    "contactLabel": "Contact",
     "phone": "0505-674-6142",
     "email": "321sim.com@gmail.com",
     "copyright": "Copyright © 321SIM. All rights reserved."

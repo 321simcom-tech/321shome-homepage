@@ -238,21 +238,19 @@ h1,h2,h3,h4{font-family:var(--font-h)}
 .faq-a p{white-space:pre-line}
 .faq-a p{margin:0;padding:0 24px 22px;font-size:15.5px;line-height:1.8;color:var(--body-c)}
 
-/* footer */
-.site-footer{background:var(--navy);padding:clamp(44px,6vw,76px) 0 36px}
-.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px}
+/* footer — 강진군청 스타일 참고: 로고+상호를 붙이고, 나머지는 촘촘한 단일 블록으로 */
+.site-footer{background:var(--navy);padding:clamp(28px,4vw,40px) 0 24px}
 .footer-brand{display:flex;align-items:center;gap:10px}
-.footer-legal{margin:14px 0 0;font-size:13.5px;line-height:1.8;color:rgba(253,251,247,.5)}
 .footer-mark{display:flex;flex-direction:column;justify-content:center;gap:3px;width:34px;height:34px;background:var(--paper);border-radius:10px;padding:8px 7px}
 .footer-mark span{display:block;height:2px;background:var(--navy);border-radius:2px}
 .footer-mark span:nth-child(3){width:60%}
-.footer-name{font-family:var(--font-h);font-size:17px;font-weight:700;color:var(--paper)}
-.footer-logo{height:44px;width:auto;max-width:160px;object-fit:contain;flex:none}
-.footer-links{display:flex;flex-direction:column;gap:10px}
-.footer-links a{font-size:15px;color:rgba(253,251,247,.72)}
-.footer-contact .label{color:rgba(253,251,247,.5)}
-.footer-info{margin:14px 0 0;font-size:15px;line-height:1.9;color:rgba(253,251,247,.72)}
-.footer-copy{margin:36px 0 0;padding-top:22px;border-top:1px solid rgba(253,251,247,.16);font-size:14px;color:rgba(253,251,247,.5)}
+.footer-name{font-family:var(--font-h);font-size:18px;font-weight:700;color:var(--paper)}
+.footer-logo{height:40px;width:auto;max-width:150px;object-fit:contain;flex:none}
+.footer-legal,.footer-address{margin:10px 0 0;font-size:13.5px;line-height:1.6;color:rgba(253,251,247,.55)}
+.footer-contact-line{margin:10px 0 0;font-size:13.5px;line-height:1.6;color:rgba(253,251,247,.75);display:flex;flex-wrap:wrap;gap:4px 8px;align-items:baseline}
+.footer-contact-line .label-inline{color:var(--inv-accent);font-weight:600;margin-right:2px}
+.footer-contact-line .sep{color:rgba(253,251,247,.3);margin:0 2px}
+.footer-copy{margin:20px 0 0;padding-top:16px;border-top:1px solid rgba(253,251,247,.16);font-size:13px;color:rgba(253,251,247,.45)}
 
 /* mobile fixed cta bar */
 .mobile-cta-bar{display:none}
